@@ -1,253 +1,153 @@
-const menuData = [
-  {
-    category: "Entrantes",
-    items: [
-      {
-        id: 1,
-        name: "Samosa de Carne",
-        description: "Triángulos de masa crujiente rellenos de carne especiada, cebolla caramelizada y cilantro fresco",
-        price: 4.50,
-        allergens: ["gluten"],
-        isBestSeller: false,
-      },
-      {
-        id: 2,
-        name: "Rollitos de Primavera",
-        description: "Rollitos vegetales fritos con salsa agridulce casera de tamarindo",
-        price: 4.00,
-        allergens: ["gluten"],
-        isBestSeller: false,
-      },
-      {
-        id: 3,
-        name: "Pakora de Verduras",
-        description: "Buñuelos de verduras variadas rebozados en harina de garbanzo con especias",
-        price: 5.00,
-        allergens: [],
-        isBestSeller: true,
-      },
-      {
-        id: 4,
-        name: "Hummus con Pan de Pita",
-        description: "Crema de garbanzos con tahini, aceite de oliva virgen y pimentón de la Vera",
-        price: 5.50,
-        allergens: ["sesamo"],
-        isBestSeller: false,
-      },
-      {
-        id: 5,
-        name: "Aloo Tikki",
-        description: "Croquetas de patata especiadas con guisantes, servidas con chutney de menta",
-        price: 4.50,
-        allergens: ["gluten"],
-        isBestSeller: false,
-      },
-      {
-        id: 6,
-        name: "Chicken Wings",
-        description: "Alitas de pollo marinadas en yogur y especias tandoori, horneadas al carbón",
-        price: 6.00,
-        allergens: ["lacteos"],
-        isBestSeller: true,
-      },
-    ],
-  },
-  {
-    category: "Kebabs",
-    items: [
-      {
-        id: 7,
-        name: "Kebab de Pollo",
-        description: "Pollo marinado en especias tradicionales, lechuga, tomate, cebolla y salsa de yogur",
-        price: 7.00,
-        allergens: ["lacteos"],
-        isBestSeller: true,
-      },
-      {
-        id: 8,
-        name: "Kebab Mixto",
-        description: "Carne de cordero y pollo con verduras frescas, salsa especial de la casa y un toque de lima",
-        price: 8.00,
-        allergens: ["lacteos"],
-        isBestSeller: true,
-      },
-      {
-        id: 9,
-        name: "Kebab de Cordero",
-        description: "Cordero especiado al carbón con cebolla morada encurtida, perejil y salsa de mango",
-        price: 8.50,
-        allergens: [],
-        isBestSeller: false,
-      },
-      {
-        id: 10,
-        name: "Kebab Vegetal",
-        description: "Falafel, hummus, verduras asadas y salsa de yogur en pan de pita integral",
-        price: 7.50,
-        allergens: ["lacteos", "sesamo"],
-        isBestSeller: false,
-      },
-      {
-        id: 11,
-        name: "Kebab Seekh",
-        description: "Brocheta de carne picada especiada con hierbabuena, asada al carbón con verduras",
-        price: 8.50,
-        allergens: [],
-        isBestSeller: true,
-      },
-      {
-        id: 12,
-        name: "Kebab de Ternera",
-        description: "Ternera marinada 24h en especias tradicionales, con salsa de yogur y menta",
-        price: 9.00,
-        allergens: ["lacteos"],
-        isBestSeller: false,
-      },
-    ],
-  },
-  {
-    category: "Bebidas",
-    items: [
-      {
-        id: 13,
-        name: "Mango Lassi",
-        description: "Batido tradicional de yogur con mango fresco y cardamomo",
-        price: 3.50,
-        allergens: ["lacteos"],
-        isBestSeller: true,
-      },
-      {
-        id: 14,
-        name: "Té Chai",
-        description: "Té negro especiado con leche, canela, jengibre, cardamomo y clavo",
-        price: 2.50,
-        allergens: ["lacteos"],
-        isBestSeller: false,
-      },
-      {
-        id: 15,
-        name: "Limonada",
-        description: "Limonada natural con menta fresca y un toque de jengibre",
-        price: 2.50,
-        allergens: [],
-        isBestSeller: false,
-      },
-      {
-        id: 16,
-        name: "Refresco",
-        description: "Coca-Cola, Sprite, Fanta Naranja, Kas Limón",
-        price: 2.00,
-        allergens: [],
-        isBestSeller: false,
-      },
-      {
-        id: 17,
-        name: "Agua Mineral",
-        description: "Agua natural o con gas 500ml",
-        price: 1.50,
-        allergens: [],
-        isBestSeller: false,
-      },
-      {
-        id: 18,
-        name: "Zumo Natural",
-        description: "Zumo de naranja recién exprimido",
-        price: 3.00,
-        allergens: [],
-        isBestSeller: false,
-      },
-    ],
-  },
-  {
-    category: "Postres",
-    items: [
-      {
-        id: 19,
-        name: "Gulab Jamun",
-        description: "Bolitas de leche fritas bañadas en almíbar de rosas y cardamomo",
-        price: 4.00,
-        allergens: ["lacteos", "gluten"],
-        isBestSeller: true,
-      },
-      {
-        id: 20,
-        name: "Kulfi de Pistacho",
-        description: "Helado tradicional pakistaní de pistacho con azafrán y cardamomo",
-        price: 4.50,
-        allergens: ["lacteos", "frutos-secos"],
-        isBestSeller: false,
-      },
-      {
-        id: 21,
-        name: "Baklava",
-        description: "Capas de masa filo con nueces, pistachos y almíbar de miel y agua de azahar",
-        price: 3.50,
-        allergens: ["gluten", "frutos-secos"],
-        isBestSeller: false,
-      },
-      {
-        id: 22,
-        name: "Ras Malai",
-        description: "Bolitas de queso cottage en crema de leche especiada con cardamomo y azafrán",
-        price: 4.50,
-        allergens: ["lacteos"],
-        isBestSeller: false,
-      },
-      {
-        id: 23,
-        name: "Helado de Mango",
-        description: "Helado artesanal de mango con trozos de fruta fresca",
-        price: 3.50,
-        allergens: ["lacteos"],
-        isBestSeller: false,
-      },
-    ],
-  },
-  {
-    category: "Menús",
-    items: [
-      {
-        id: 24,
-        name: "Menú Express",
-        description: "Kebab de pollo + patatas gajo + refresco",
-        price: 9.50,
-        allergens: ["lacteos"],
-        isBestSeller: true,
-      },
-      {
-        id: 25,
-        name: "Menú Deluxe",
-        description: "Kebab mixto + patatas + bebida + postre",
-        price: 12.00,
-        allergens: ["lacteos", "gluten"],
-        isBestSeller: true,
-      },
-      {
-        id: 26,
-        name: "Menú Especial",
-        description: "Entrante + Kebab mixto + postre + té chai",
-        price: 14.00,
-        allergens: ["lacteos", "gluten", "frutos-secos"],
-        isBestSeller: false,
-      },
-      {
-        id: 27,
-        name: "Menú Familiar",
-        description: "4 Kebabs + 2 entrantes + 4 bebidas + postre (para 4 personas)",
-        price: 32.00,
-        allergens: ["lacteos", "gluten"],
-        isBestSeller: false,
-      },
-      {
-        id: 28,
-        name: "Menú Infantil",
-        description: "Mini kebab de pollo + patatas + zumo + sorpresa",
-        price: 6.50,
-        allergens: ["lacteos"],
-        isBestSeller: false,
-      },
-    ],
-  },
+export const kebabMenu = {
+  title: "Menú Kebab",
+  color: "green-deep",
+  sections: [
+    {
+      name: "Menús Kebab",
+      items: [
+        { id: "k1", name: "Kebab (Pollo / Ternera / Mixto)", desc: "+ Patatas + Bebida", price: 8.00 },
+        { id: "k2", name: "Durum (Pollo / Ternera / Mixto)", desc: "+ Patatas + Bebida", price: 8.50 },
+        { id: "k3", name: "Burger de pollo", desc: "+ Patatas + Bebida", price: 7.00 },
+        { id: "k4", name: "Plato kebab", desc: "+ Bebida + Pan", price: 8.00 },
+        { id: "k5", name: "Plato kebab", desc: "Solo plato", price: 6.50 },
+        { id: "k6", name: "Plato solo carne", desc: "", price: 7.00 },
+      ],
+    },
+    {
+      name: "Kebab con pan turco",
+      items: [
+        { id: "k7", name: "Completo", desc: "", price: 4.00 },
+        { id: "k8", name: "Solo carne", desc: "", price: 4.50 },
+      ],
+    },
+    {
+      name: "Kebab con pan durum",
+      items: [
+        { id: "k9", name: "Completo", desc: "", price: 5.00 },
+        { id: "k10", name: "Solo carne", desc: "", price: 5.50 },
+      ],
+    },
+    {
+      name: "Hamburguesa",
+      items: [
+        { id: "k11", name: "Burger de pollo", desc: "", price: 4.50 },
+      ],
+    },
+    {
+      name: "Falafel",
+      items: [
+        { id: "k12", name: "Con pan turco", desc: "", price: 5.00 },
+        { id: "k13", name: "Con pan durum", desc: "", price: 5.50 },
+        { id: "k14", name: "En plato", desc: "", price: 5.50 },
+      ],
+    },
+    {
+      name: "Ensaladas",
+      items: [
+        { id: "k15", name: "Ensalada turca", desc: "", price: 3.50 },
+        { id: "k16", name: "Ensalada de atún", desc: "", price: 3.50 },
+      ],
+    },
+    {
+      name: "Patatas",
+      items: [
+        { id: "k17", name: "Bravas", desc: "", price: 3.00 },
+        { id: "k18", name: "Fritas con salsa", desc: "", price: 3.00 },
+      ],
+    },
+    {
+      name: "Suplementos",
+      items: [
+        { id: "k19", name: "Queso / Doble carne / Solo carne / Sin lechuga", desc: "+0,50€ cada uno", price: 0.50 },
+      ],
+    },
+  ],
+}
+
+export const pizzaMenu = {
+  title: "Menú Pizza",
+  color: "green-deep",
+  sections: [
+    {
+      name: "Menús Pizza",
+      items: [
+        { id: "p1", name: "Pizza kebab", desc: "", price: 7.50 },
+        { id: "p2", name: "Pizza kebab + Patatas + Bebida", desc: "", price: 9.50 },
+        { id: "p3", name: "Pizza kebab + Ensalada + Bebida", desc: "", price: 10.00 },
+        { id: "p4", name: "Pizza kebab + Patatas + Nuggets", desc: "", price: 10.00 },
+      ],
+    },
+    {
+      name: "Nuestras Pizzas",
+      items: [
+        { id: "p5", name: "Pollo kebab", desc: "", price: 7.50 },
+        { id: "p6", name: "Mixto kebab", desc: "", price: 7.50 },
+        { id: "p7", name: "Ternera kebab", desc: "", price: 7.50 },
+        { id: "p8", name: "Mixto kebab + picante", desc: "", price: 7.50 },
+        { id: "p9", name: "Margarita", desc: "", price: 7.50 },
+        { id: "p10", name: "Calzone", desc: "", price: 8.00 },
+        { id: "p11", name: "4 quesos", desc: "", price: 7.50 },
+        { id: "p12", name: "Atún con cebolla", desc: "", price: 8.00 },
+        { id: "p13", name: "Atún con olivas", desc: "", price: 8.00 },
+        { id: "p14", name: "Atún con queso", desc: "", price: 8.00 },
+        { id: "p15", name: "Vegetal", desc: "", price: 8.00 },
+        { id: "p16", name: "Express Pizza", desc: "Salsa tomate, pollo, ternera o mixto, atún y queso", price: 10.50 },
+      ],
+    },
+    {
+      name: "Extras",
+      items: [
+        { id: "p17", name: "Ingrediente extra", desc: "", price: 0.50 },
+        { id: "p18", name: "Bote de salsa", desc: "", price: 0.50 },
+      ],
+    },
+    {
+      name: "Bebidas",
+      items: [
+        { id: "p19", name: "Refresco 33cl", desc: "Coca-Cola, Sprite, Fanta", price: 1.50 },
+        { id: "p20", name: "Agua pequeña", desc: "", price: 1.00 },
+        { id: "p21", name: "Agua 1.5L", desc: "", price: 1.50 },
+      ],
+    },
+  ],
+}
+
+export const kidsMenu = {
+  title: "Menú Infantil",
+  color: "green-deep",
+  items: [
+    { id: "c1", name: "Nuggets (7 uds)", price: 4.00 },
+    { id: "c2", name: "Plato kebab + Patatas + Carne", price: 4.00 },
+    { id: "c3", name: "Nuggets con patatas (4 uds)", price: 4.00 },
+    { id: "c4", name: "Doner Box (Patatas + Carne)", price: 5.00 },
+    { id: "c5", name: "Burger ternera", price: 5.00 },
+    { id: "c6", name: "Patatas fritas + salsa", price: 3.00 },
+    { id: "c7", name: "Alitas", price: 5.00 },
+    { id: "c8", name: "Tiras de pollo (5 uds)", price: 5.00 },
+    { id: "c9", name: "Tiras de pollo (10 uds)", price: 10.00 },
+    { id: "c10", name: "Patatas bravas", price: 3.00 },
+    { id: "c11", name: "Samosa de pollo (3 uds)", price: 6.00 },
+    { id: "c12", name: "Seekh kebab (4 uds)", price: 6.00 },
+    { id: "c13", name: "Patatas deluxe", price: 3.50 },
+  ],
+}
+
+export const offers = [
+  { id: "o1", title: "Martes de Kebab", desc: "Kebab completo", price: 2.99, highlight: true },
+  { id: "o2", title: "Plato kebab con arroz", desc: "", price: 9.00, highlight: false },
+  { id: "o3", title: "Menú taco", desc: "+ Patatas + Bebida", price: 9.00, highlight: false },
+  { id: "o4", title: "Taco solo", desc: "", price: 5.00, highlight: false },
+  { id: "o5", title: "Durum gratinado", desc: "Solo carne 7€ / Menú 9,50€", price: 6.50, highlight: false },
+  { id: "o6", title: "Plato gratinado", desc: "", price: 10.00, highlight: false },
+  { id: "o7", title: "Menú Infantil", desc: "", price: 5.00, highlight: true },
 ]
 
-export default menuData
+export const scheduleData = {
+  monday:    { open: "12:00", close: "00:00" },
+  tuesday:   { open: "12:00", close: "00:00" },
+  wednesday: { open: "12:00", close: "00:00" },
+  thursday:  { open: "12:00", close: "00:00" },
+  friday:    { open: "12:00", close: "00:00" },
+  saturday:  { open: "12:00", close: "00:00" },
+  sunday:    { open: "12:00", close: "00:00" },
+}

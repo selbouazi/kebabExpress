@@ -1,4 +1,4 @@
-import { MapPin, Navigation, Train, Car } from 'lucide-react'
+import { MapPin, Navigation } from 'lucide-react'
 import useScrollAnimation from '../hooks/useScrollAnimation'
 import { contactInfo } from '../data/restaurantData'
 
@@ -6,46 +6,41 @@ export default function LocationMap() {
   const sectionRef = useScrollAnimation()
 
   return (
-    <section id="location" ref={sectionRef} className="relative py-32 lg:py-40 bg-ebony overflow-hidden">
-      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-cinnabar/[0.02] rounded-full blur-3xl" />
-
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
-        <div className="text-center mb-16 reveal">
-          <span className="text-cinnabar text-xs tracking-[0.3em] uppercase font-semibold">
-            Ubicación
-          </span>
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white font-heading leading-[0.95] mt-6">
-            Ven a
-            <br />
-            <span className="italic font-normal">visitarnos</span>
+    <section id="location" ref={sectionRef} className="relative pt-12 pb-16 sm:pt-16 sm:pb-20 bg-green-dark">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8 reveal">
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gold/20 mb-4 mx-auto">
+            <MapPin size={28} className="text-gold" />
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-display text-gold leading-none tracking-wide drop-shadow-[2px_2px_0_rgba(0,0,0,0.4)]">
+            DÓNDE ESTAMOS
           </h2>
-          <div className="w-12 h-px bg-cinnabar/30 mx-auto mt-8" />
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-8">
-          <div className="lg:col-span-3 rounded-sm overflow-hidden border border-white/[0.04] h-[400px] lg:h-[500px] group">
+        <div className="grid lg:grid-cols-3 gap-5">
+          <div className="lg:col-span-2 rounded overflow-hidden border-2 border-gold/25 h-[320px] lg:h-[380px] relative">
             <iframe
               src={contactInfo.mapsEmbed}
               width="100%"
               height="100%"
-              style={{ border: 0 }}
+              style={{ border: 0, filter: 'grayscale(0.7) sepia(0.3) hue-rotate(80deg) saturate(0.4) brightness(0.85)' }}
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Kebab Express"
-              className="opacity-60 group-hover:opacity-100 transition-opacity duration-700 grayscale group-hover:grayscale-0"
+              title="Express Kebab"
+              className="w-full h-full transition-all duration-500"
             />
           </div>
 
-          <div className="lg:col-span-2 space-y-4">
-            <div className="bg-coffee/40 rounded-sm p-6 border border-white/[0.04] hover:border-cinnabar/20 transition-all duration-500 reveal">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-sm bg-cinnabar/10 flex items-center justify-center flex-shrink-0">
-                  <MapPin className="text-cinnabar" size={20} />
+          <div className="space-y-3">
+            <div className="reveal bg-gradient-to-b from-green-card to-green-dark/90 border border-gold/20 rounded p-5 shadow-md">
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
+                  <MapPin className="text-gold" size={18} />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-white mb-1">Dirección</h3>
-                  <p className="text-white/40 text-sm leading-relaxed">
+                  <h3 className="text-sm font-semibold text-white uppercase tracking-wide">Dirección</h3>
+                  <p className="text-white/60 font-light text-xs mt-1 leading-relaxed">
                     {contactInfo.address.street}<br />
                     {contactInfo.address.city}
                   </p>
@@ -53,42 +48,22 @@ export default function LocationMap() {
                     href={contactInfo.mapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-cinnabar text-xs tracking-wider uppercase font-medium mt-3 hover:underline group"
+                    className="inline-flex items-center gap-1 text-gold font-medium text-xs mt-2 hover:underline"
                   >
-                    <Navigation size={12} className="group-hover:translate-x-1 transition-transform" />
+                    <Navigation size={12} />
                     Cómo llegar
                   </a>
                 </div>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-coffee/40 rounded-sm p-5 border border-white/[0.04] hover:border-gold/20 transition-all duration-500 reveal reveal-delay-1">
-                <div className="w-10 h-10 rounded-sm bg-gold/10 flex items-center justify-center mb-3">
-                  <Train className="text-gold" size={16} />
-                </div>
-                <p className="text-white font-semibold text-sm">Metro</p>
-                <p className="text-white/30 text-xs mt-1">{contactInfo.metro}</p>
+            <div className="reveal reveal-delay-1 bg-gradient-to-b from-green-card to-green-dark/90 border border-gold/20 rounded p-5 shadow-md">
+              <div className="flex items-center gap-3">
+                <span className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse" />
+                <span className="text-green-300 font-medium text-xs uppercase tracking-wider">Abierto ahora</span>
               </div>
-              <div className="bg-coffee/40 rounded-sm p-5 border border-white/[0.04] hover:border-cinnabar/20 transition-all duration-500 reveal reveal-delay-2">
-                <div className="w-10 h-10 rounded-sm bg-cinnabar/10 flex items-center justify-center mb-3">
-                  <Car className="text-cinnabar" size={16} />
-                </div>
-                <p className="text-white font-semibold text-sm">Parking</p>
-                <p className="text-white/30 text-xs mt-1">{contactInfo.parking}</p>
-              </div>
-            </div>
-
-            <div className="bg-coffee/40 rounded-sm p-6 border border-white/[0.04] reveal reveal-delay-3">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="relative flex w-2 h-2">
-                  <span className="absolute inset-0 rounded-full bg-green-400" />
-                  <span className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-60" />
-                </span>
-                <span className="text-green-400 text-xs tracking-wider uppercase font-medium">Abierto ahora</span>
-              </div>
-              <p className="text-white/30 text-sm font-light">
-                Te esperamos en {contactInfo.address.street}. Ven cuando quieras.
+              <p className="text-white/50 font-light text-xs mt-1">
+                Te esperamos. Pide para llevar o come aquí.
               </p>
             </div>
           </div>

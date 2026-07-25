@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import scheduleData from '../data/scheduleData'
+import { scheduleData } from '../data/menuData'
 
 const daysMap = {
   sunday: 0, monday: 1, tuesday: 2, wednesday: 3,
