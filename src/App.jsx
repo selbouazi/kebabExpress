@@ -1,4 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
+import CustomCursor from './components/CustomCursor'
+import NoiseOverlay from './components/NoiseOverlay'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import AboutUs from './components/AboutUs'
@@ -29,7 +31,9 @@ function Home() {
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#FFF7EF] text-[#2D2017] font-sans">
+    <div className="min-h-screen bg-ebony text-white font-sans overflow-x-hidden">
+      <CustomCursor />
+      <NoiseOverlay />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aviso-legal" element={<AvisoLegal />} />

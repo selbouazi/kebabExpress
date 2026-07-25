@@ -1,83 +1,79 @@
-import { Flame, Leaf, Clock, Heart } from 'lucide-react'
+import { ChefHat, Leaf, Award, Heart } from 'lucide-react'
+import useScrollAnimation from '../hooks/useScrollAnimation'
+import { teamMembers, whyUs } from '../data/restaurantData'
 
-const values = [
-  {
-    icon: Flame,
-    title: 'Recetas tradicionales',
-    description: 'Cada plato sigue recetas auténticas pakistaníes transmitidas de generación en generación.',
-  },
-  {
-    icon: Leaf,
-    title: 'Ingredientes frescos',
-    description: 'Seleccionamos los ingredientes más frescos cada día para garantizar el mejor sabor.',
-  },
-  {
-    icon: Clock,
-    title: 'Servicio rápido',
-    description: 'Sabemos que tienes hambre. Nuestro equipo prepara tu pedido en menos de 10 minutos.',
-  },
-  {
-    icon: Heart,
-    title: 'Hecho con pasión',
-    description: 'Cocinamos con el corazón para ofrecerte una experiencia gastronómica inolvidable.',
-  },
-]
+const iconMap = { chef: ChefHat, spices: Leaf, award: Award, family: Heart }
 
 export default function AboutUs() {
+  const sectionRef = useScrollAnimation()
+
   return (
-    <section id="about" className="py-20 lg:py-28 bg-[#FFF7EF]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-20">
-          <div>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1C0F0A] font-heading leading-tight mb-6">
-              Sobre
-              <br />
-              <span className="text-[#D94A2B]">Nosotros</span>
-            </h2>
-            <div className="space-y-4 text-[#2D2017]/80 leading-relaxed">
-              <p>
-                Kebab Express nace de la pasión por compartir los auténticos sabores de Pakistán con nuestra comunidad. 
-                Desde nuestro primer día, nos hemos comprometido a ofrecer una experiencia culinaria que transporta 
-                directamente a las calles de Lahore y Karachi.
-              </p>
-              <p>
-                Nuestro equipo de cocineros, formado en las mejores tradiciones pakistaníes, prepara cada plato 
-                con especias cuidadosamente seleccionadas y recetas que han perfeccionado durante años.
-              </p>
-              <p>
-                Creemos que la buena comida une a las personas, y no hay nada como un kebab recién hecho para 
-                compartir momentos inolvidables.
-              </p>
-            </div>
-          </div>
-          <div className="relative">
-            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
-              <img
-                src="/imagenPredeterminada.webp"
-                alt="Kebab Express local"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="absolute -bottom-6 -left-6 bg-[#D94A2B] rounded-2xl p-6 shadow-xl hidden lg:block">
-              <p className="text-white text-3xl font-bold font-heading">15+</p>
-              <p className="text-white/80 text-sm">Platos artesanales</p>
-            </div>
-          </div>
+    <section id="about" ref={sectionRef} className="relative py-32 lg:py-40 bg-ebony overflow-hidden">
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cinnabar/[0.02] rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gold/[0.02] rounded-full blur-3xl" />
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
+        <div className="text-center mb-16 lg:mb-20 reveal">
+          <span className="text-cinnabar text-xs tracking-[0.3em] uppercase font-semibold">El equipo</span>
+          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white font-heading leading-[0.95] mt-6">
+            Quiénes<br /><span className="italic font-normal">cocinan</span>
+          </h2>
+          <div className="w-12 h-px bg-cinnabar/30 mx-auto mt-8" />
+          <p className="text-white/30 text-sm max-w-lg mx-auto mt-6 font-light leading-relaxed">
+            Detrás de cada plato hay personas que ponen todo su conocimiento y pasión para que tu experiencia sea inolvidable.
+          </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {values.map((value, index) => (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 mb-24">
+          {teamMembers.map((member, i) => (
             <div
-              key={index}
-              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-[#2D2017]/5"
+              key={i}
+              className="reveal group bg-coffee/40 rounded-sm border border-white/[0.04] overflow-hidden hover:border-cinnabar/20 transition-all duration-500"
+              style={{ transitionDelay: `${i * 0.08}s` }}
             >
-              <div className="w-12 h-12 rounded-xl bg-[#D94A2B]/10 flex items-center justify-center mb-4">
-                <value.icon className="text-[#D94A2B]" size={24} />
+              <div className="aspect-[3/4] bg-gradient-to-br from-[#2A1F18] to-[#1A0F0A] overflow-hidden relative">
+                <img
+                  src="/placeholder.svg"
+                  alt=""
+                  className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-700"
+                />
               </div>
-              <h3 className="text-lg font-bold text-[#1C0F0A] mb-2">{value.title}</h3>
-              <p className="text-sm text-[#2D2017]/70 leading-relaxed">{value.description}</p>
+              <div className="p-5 space-y-2">
+                <div>
+                  <p className="text-white font-bold text-base font-heading">{member.name}</p>
+                  <p className="text-cinnabar text-[10px] tracking-wider uppercase font-medium mt-0.5">{member.role}</p>
+                </div>
+                <p className="text-white/40 text-xs leading-relaxed font-light">{member.desc}</p>
+              </div>
             </div>
           ))}
+        </div>
+
+        <div className="text-center mb-10 reveal">
+          <span className="text-gold text-xs tracking-[0.3em] uppercase font-semibold">Por qué elegirnos</span>
+          <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white font-heading leading-[0.95] mt-4">
+            La diferencia<br /><span className="italic font-normal">Kebab Express</span>
+          </h3>
+          <div className="w-12 h-px bg-gold/30 mx-auto mt-6" />
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {whyUs.map((r, i) => {
+            const Icon = iconMap[r.icon] || ChefHat
+            return (
+              <div
+                key={i}
+                className="reveal group bg-coffee/40 rounded-sm p-8 border border-white/[0.04] hover:border-gold/20 transition-all duration-500 hover:-translate-y-1"
+                style={{ transitionDelay: `${i * 0.08}s` }}
+              >
+                <div className="w-12 h-12 rounded-sm bg-cinnabar/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-500">
+                  <Icon className="text-cinnabar" size={22} />
+                </div>
+                <h4 className="text-white font-bold text-base mb-3">{r.title}</h4>
+                <p className="text-white/35 text-sm leading-relaxed font-light">{r.desc}</p>
+              </div>
+            )
+          })}
         </div>
       </div>
     </section>
