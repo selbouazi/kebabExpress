@@ -95,7 +95,7 @@ export default function Hero() {
             className="h-20 sm:h-28 lg:h-36 w-auto mx-auto mb-4 sm:mb-6"
             style={{ filter: 'drop-shadow(4px 4px 0 rgba(0,0,0,0.3))' }}
           >
-            <source src="/hero-logo.mp4" type="video/mp4" />
+            <source src="/hero-logo.webm" type="video/webm" />
           </video>
         </motion.div>
 
