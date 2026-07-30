@@ -90,11 +90,13 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
         >
-          <motion.img
-            src="/logo.png" width="160" height="160"
-            alt="Express Kebab"
-            className="h-20 sm:h-28 lg:h-36 w-auto mx-auto mb-4 sm:mb-6 drop-shadow-[4px_4px_0_rgba(0,0,0,0.3)]"
-          />
+          <video
+            autoPlay muted playsInline
+            className="h-20 sm:h-28 lg:h-36 w-auto mx-auto mb-4 sm:mb-6"
+            style={{ filter: 'drop-shadow(4px 4px 0 rgba(0,0,0,0.3))' }}
+          >
+            <source src="/hero-logo.mp4" type="video/mp4" />
+          </video>
         </motion.div>
 
         <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-display leading-none tracking-wide drop-shadow-[3px_3px_0_rgba(0,0,0,0.6)] mb-4 sm:mb-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
