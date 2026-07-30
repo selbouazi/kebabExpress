@@ -34,7 +34,7 @@ export default function Menu() {
       icon={UtensilsCrossed}
       title="MENÚ"
       subtitle="Kebabs, pizzas, entrantes y bebidas — todo casero"
-      bgColor="bg-green-dark"
+      bgColor="bg-charcoal"
     >
       <Marquee
         items={marqueeItems}
@@ -53,23 +53,23 @@ export default function Menu() {
             transition={{ duration: 0.5, ease: 'easeOut' }}
             className="max-w-md mx-auto mb-10"
           >
-            <div className="relative bg-gradient-to-r from-gold via-amber-400 to-gold-dark rounded-xl p-4 sm:p-5 text-center shadow-xl shadow-gold/20 overflow-hidden">
+            <div className="relative bg-gradient-to-r from-saffron via-amber-500 to-saffron/80 rounded-xl p-4 sm:p-5 text-center overflow-hidden" style={{ boxShadow: '0 8px 32px rgba(212, 160, 23, 0.15)' }}>
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.15),transparent_60%)]" />
               <div className="relative z-10">
                 <div className="flex items-center justify-center gap-2 mb-1">
-                  <Percent size={16} className="text-red-cola" />
-                  <span className="text-green-brand font-display text-xs uppercase tracking-widest font-bold">Oferta destacada</span>
-                  <Percent size={16} className="text-red-cola" />
+                  <Percent size={16} className="text-paprika" />
+                  <span className="text-charcoal font-display text-xs uppercase tracking-widest font-bold">Oferta destacada</span>
+                  <Percent size={16} className="text-paprika" />
                 </div>
                 {offers.map((o) => (
                   <div key={o.id} className="flex items-center justify-center gap-3">
-                    <span className="text-green-dark font-bold text-xl">{o.title}</span>
-                    <span className="text-3xl font-black text-red-cola drop-shadow-[1px_1px_0_rgba(0,0,0,0.15)]">
+                    <span className="text-charcoal font-bold text-xl">{o.title}</span>
+                    <span className="text-3xl font-black text-paprika drop-shadow-[1px_1px_0_rgba(0,0,0,0.15)]">
                       {o.price.toFixed(2).replace('.', ',')}€
                     </span>
                   </div>
                 ))}
-                {offers[0]?.desc && <p className="text-green-dark/70 text-xs mt-0.5">{offers[0].desc}</p>}
+                {offers[0]?.desc && <p className="text-charcoal/60 text-xs mt-0.5">{offers[0].desc}</p>}
               </div>
             </div>
           </motion.div>
@@ -89,8 +89,8 @@ export default function Menu() {
             onClick={() => setActiveTab(i)}
             className={`relative px-5 py-2.5 font-body text-xs uppercase tracking-widest rounded-full transition-all duration-300 cursor-pointer ${
               activeTab === i
-                ? 'bg-gold text-green-brand font-semibold shadow-lg shadow-gold/20 scale-105'
-                : 'bg-white/5 text-white/50 hover:bg-white/10 hover:text-white/80 border border-white/5'
+                ? 'bg-paprika text-cream font-semibold scale-105'
+                : 'bg-white/5 text-cream-muted/50 hover:bg-white/10 hover:text-cream/80 border border-white/5'
             }`}
           >
             <span className="mr-1.5">{tabIcons[i]}</span>

@@ -21,7 +21,7 @@ function NavLink({ href, label, active, onClick }) {
       className={`relative px-3 py-1.5 text-[11px] uppercase tracking-[0.15em] font-medium rounded-full transition-all duration-300 ${
         active
           ? 'text-cream'
-          : 'text-cream-muted/60 hover:text-cream'
+          : 'text-cream-muted/50 hover:text-cream/80'
       }`}
     >
       {active && (
@@ -31,7 +31,7 @@ function NavLink({ href, label, active, onClick }) {
           style={{
             background: 'radial-gradient(ellipse at center, rgba(193,80,46,0.15), transparent 70%)',
           }}
-          transition={{ type: 'spring', stiffness: 350, damping: 25 }}
+          transition={{ type: 'spring', stiffness: 400, damping: 28 }}
         />
       )}
       <span className="relative z-10">{label}</span>
@@ -54,7 +54,7 @@ export default function FloatingPillNav() {
   }, [])
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 200)
+    const onScroll = () => setScrolled(window.scrollY > 250)
     window.addEventListener('scroll', onScroll, { passive: true })
     onScroll()
     return () => window.removeEventListener('scroll', onScroll)
@@ -86,60 +86,71 @@ export default function FloatingPillNav() {
 
   if (!isMobile) {
     return (
-      <nav className="fixed top-0 left-0 right-0 flex justify-center pt-5 z-50 pointer-events-none">
+      <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none" style={{ paddingTop: 'clamp(12px, 2.5vh, 24px)' }}>
         <motion.div
           layout
           transition={{ duration: 0.5, ease: [0.65, 0, 0.35, 1] }}
-          className="flex items-center rounded-full pointer-events-auto overflow-hidden"
+          className="flex items-center rounded-full pointer-events-auto"
           style={{
-            backgroundColor: scrolled ? 'rgba(38, 30, 26, 0.85)' : 'rgba(38, 30, 26, 0)',
-            backdropFilter: scrolled ? 'blur(16px)' : 'none',
-            border: scrolled ? '1px solid rgba(193, 80, 46, 0.12)' : '1px solid rgba(193, 80, 46, 0)',
-            boxShadow: scrolled ? '0 4px 30px rgba(0,0,0,0.3)' : 'none',
+            backgroundColor: scrolled ? 'rgba(38, 30, 26, 0.9)' : 'rgba(38, 30, 26, 0.35)',
+            backdropFilter: scrolled ? 'blur(20px)' : 'blur(6px)',
+            WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'blur(6px)',
+            border: scrolled ? '1px solid rgba(193, 80, 46, 0.15)' : '1px solid rgba(193, 80, 46, 0.08)',
+            boxShadow: scrolled ? '0 4px 40px rgba(0,0,0,0.5)' : '0 2px 12px rgba(0,0,0,0.15)',
           }}
         >
           <a
             href="#hero"
             onClick={(e) => { e.preventDefault(); scrollTo('#hero') }}
-            className="w-10 h-10 flex items-center justify-center shrink-0 mx-1"
+            className="w-[44px] h-[44px] flex items-center justify-center shrink-0"
+            aria-label="Inicio"
           >
             <img
               src="/logo.svg"
               alt="Express Kebab"
-              width="26" height="26"
-              className="h-[26px] w-auto"
+              width="24" height="24"
+              className="h-6 w-auto"
+              style={{ filter: scrolled ? 'none' : 'brightness(1.1)' }}
             />
           </a>
 
-          <div
-            className={`flex items-center gap-0.5 overflow-hidden transition-all duration-400 ease-out ${
-              scrolled ? 'max-w-[600px] opacity-100' : 'max-w-0 opacity-0'
-            }`}
-          >
-            <div className="w-px h-5 bg-paprika/15 mx-1 shrink-0" />
-
-            {links.map((link) => (
-              <NavLink
-                key={link.href}
-                href={link.href}
-                label={link.label}
-                active={activeSection === link.href}
-                onClick={scrollTo}
-              />
-            ))}
-
-            <div className="flex items-center gap-1.5 ml-2 pl-3 border-l border-paprika/15">
-              <span className="text-saffron font-bold text-[10px]">4.5</span>
-              <a
-                href={contactInfo.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-3.5 py-1.5 bg-paprika text-cream font-semibold text-[10px] uppercase tracking-widest rounded-full hover:bg-paprika-dark transition-colors shadow-lg shadow-paprika/20"
+          <AnimatePresence mode="wait">
+            {scrolled && (
+              <motion.div
+                key="navContent"
+                initial={{ opacity: 0, x: -8 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -8 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+                className="flex items-center gap-0.5 pr-1.5 overflow-hidden"
               >
-                Pide ya
-              </a>
-            </div>
-          </div>
+                <div className="w-px h-5 shrink-0 mx-1" style={{ backgroundColor: 'rgba(193, 80, 46, 0.15)' }} />
+
+                {links.map((link) => (
+                  <NavLink
+                    key={link.href}
+                    href={link.href}
+                    label={link.label}
+                    active={activeSection === link.href}
+                    onClick={scrollTo}
+                  />
+                ))}
+
+                <div className="flex items-center gap-2 ml-2 pl-3 shrink-0" style={{ borderLeft: '1px solid rgba(193, 80, 46, 0.12)' }}>
+                  <span className="text-saffron font-bold text-[10px]">4.5</span>
+                  <a
+                    href={contactInfo.whatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3.5 py-1.5 bg-paprika text-cream font-semibold text-[10px] uppercase tracking-widest rounded-full hover:bg-paprika-dark transition-colors"
+                    style={{ boxShadow: '0 2px 12px rgba(193, 80, 46, 0.25)' }}
+                  >
+                    Pide ya
+                  </a>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
       </nav>
     )
@@ -149,10 +160,15 @@ export default function FloatingPillNav() {
     <>
       <motion.button
         onClick={() => setMobileOpen(true)}
-        className="fixed bottom-20 left-4 z-50 w-12 h-12 rounded-full flex items-center justify-center shadow-lg"
-        style={{ backgroundColor: '#C1502E', boxShadow: '0 4px 16px rgba(193,80,46,0.35)' }}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.92 }}
+        className="fixed z-50 w-12 h-12 rounded-full flex items-center justify-center"
+        style={{
+          bottom: 'calc(80px + env(safe-area-inset-bottom, 0px))',
+          left: 'max(16px, env(safe-area-inset-left, 0px))',
+          backgroundColor: '#C1502E',
+          boxShadow: '0 4px 20px rgba(193,80,46,0.35)',
+        }}
+        whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.9 }}
         aria-label="Abrir menú"
       >
         <img src="/logo.svg" alt="" width="22" height="22" className="h-[22px] w-auto brightness-0 invert" />
@@ -161,12 +177,16 @@ export default function FloatingPillNav() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.85, transformOrigin: 'bottom left' }}
+            initial={{ opacity: 0, scale: 0.9, transformOrigin: 'bottom left' }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.85, transformOrigin: 'bottom left' }}
-            transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="fixed inset-0 z-[60] flex flex-col items-center justify-center gap-6 px-6"
-            style={{ backgroundColor: 'rgba(26, 20, 18, 0.96)', backdropFilter: 'blur(24px)' }}
+            exit={{ opacity: 0, scale: 0.9, transformOrigin: 'bottom left' }}
+            transition={{ duration: 0.2, ease: 'easeOut' }}
+            className="fixed inset-0 z-[60] flex flex-col items-center justify-center gap-5 px-6"
+            style={{
+              backgroundColor: 'rgba(26, 20, 18, 0.96)',
+              backdropFilter: 'blur(24px)',
+              WebkitBackdropFilter: 'blur(24px)',
+            }}
           >
             <button
               onClick={() => setMobileOpen(false)}
@@ -194,7 +214,7 @@ export default function FloatingPillNav() {
                 transition={{ delay: i * 0.05, duration: 0.3, ease: 'easeOut' }}
                 className="relative text-xl uppercase tracking-widest font-medium py-2 px-6 rounded-full transition-all duration-300"
                 style={{
-                  color: activeSection === link.href ? '#F2E8DC' : 'rgba(184, 168, 154, 0.5)',
+                  color: activeSection === link.href ? '#F2E8DC' : 'rgba(184, 168, 154, 0.4)',
                 }}
               >
                 {activeSection === link.href && (
@@ -218,7 +238,7 @@ export default function FloatingPillNav() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.35, duration: 0.3, ease: 'easeOut' }}
-              className="mt-3 px-10 py-3.5 rounded-full font-semibold text-sm uppercase tracking-wider shadow-xl"
+              className="mt-3 px-10 py-3.5 rounded-full font-semibold text-sm uppercase tracking-wider"
               style={{
                 backgroundColor: '#C1502E',
                 color: '#F2E8DC',

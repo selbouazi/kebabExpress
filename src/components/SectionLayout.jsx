@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
 import { motion } from 'framer-motion'
 
-const SectionLayout = forwardRef(({ id, icon: Icon, title, subtitle, children, bgColor = 'bg-green-dark' }, ref) => {
+const SectionLayout = forwardRef(({ id, icon: Icon, title, subtitle, children, bgColor = 'bg-charcoal' }, ref) => {
   return (
     <motion.section
       id={id}

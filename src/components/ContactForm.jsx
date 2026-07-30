@@ -54,13 +54,13 @@ export default function ContactForm() {
       className="max-w-xl mx-auto mb-12"
     >
       <div className="text-center mb-6">
-        <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gold/10 mb-3 mx-auto ring-2 ring-gold/10">
-          <Send size={20} className="text-gold" />
+        <div className="inline-flex items-center justify-center w-12 h-12 rounded-full mb-3 mx-auto"
+          style={{ backgroundColor: 'rgba(193, 80, 46, 0.1)', boxShadow: 'inset 0 0 0 2px rgba(193, 80, 46, 0.08)' }}
+        >
+          <Send size={20} style={{ color: '#C1502E' }} />
         </div>
-        <h3 className="text-xl font-display text-gold uppercase tracking-wider drop-shadow-[1px_1px_0_rgba(0,0,0,0.3)]">
-          Escríbenos
-        </h3>
-        <p className="text-white/45 font-body text-xs mt-1">Te responderemos en menos de 24h</p>
+        <h3 className="text-xl font-heading text-cream uppercase tracking-wider">Escríbenos</h3>
+        <p className="text-cream-muted/50 font-body text-xs mt-1">Te responderemos en menos de 24h</p>
       </div>
       <form onSubmit={handleSubmit} className="glass-card rounded-xl p-6 shadow-lg space-y-4">
         <motion.div
@@ -69,18 +69,25 @@ export default function ContactForm() {
           viewport={{ once: true }}
           transition={{ duration: 0.3, ease: 'easeOut', delay: 0.05 }}
         >
-          <label htmlFor="contact-name" className="block text-white/60 font-body text-xs uppercase tracking-wider mb-1.5">Nombre</label>
+          <label htmlFor="contact-name" className="block text-cream-muted/50 font-body text-xs uppercase tracking-wider mb-1.5">Nombre</label>
           <input
             id="contact-name"
             type="text"
             value={formData.name}
             onChange={(e) => updateField('name', e.target.value)}
-            className="w-full bg-green-dark/50 border border-white/10 rounded-lg px-4 py-2.5 text-white font-body text-sm placeholder:text-white/20 focus:outline-none focus:border-gold/50 focus:ring-1 focus:ring-gold/20 transition-all"
+            className="w-full rounded-lg px-4 py-2.5 text-cream font-body text-sm placeholder:text-cream-muted/20 focus:outline-none transition-all"
+            style={{
+              backgroundColor: 'rgba(26, 20, 18, 0.5)',
+              border: '1px solid rgba(255,255,255,0.06)',
+              color: '#F2E8DC',
+            }}
             placeholder="Tu nombre"
+            onFocus={(e) => { e.target.style.borderColor = 'rgba(193, 80, 46, 0.4)'; e.target.style.boxShadow = '0 0 0 1px rgba(193, 80, 46, 0.15)' }}
+            onBlur={(e) => { e.target.style.borderColor = 'rgba(255,255,255,0.06)'; e.target.style.boxShadow = 'none' }}
             aria-invalid={!!formErrors.name}
             aria-describedby={formErrors.name ? 'contact-name-error' : undefined}
           />
-          {formErrors.name && <p id="contact-name-error" className="text-red-cola text-xs mt-1">{formErrors.name}</p>}
+          {formErrors.name && <p id="contact-name-error" className="text-paprika text-xs mt-1">{formErrors.name}</p>}
         </motion.div>
         <motion.div
           initial={{ opacity: 0, x: -10 }}
@@ -88,18 +95,25 @@ export default function ContactForm() {
           viewport={{ once: true }}
           transition={{ duration: 0.3, ease: 'easeOut', delay: 0.1 }}
         >
-          <label htmlFor="contact-contact" className="block text-white/60 font-body text-xs uppercase tracking-wider mb-1.5">Teléfono o Email</label>
+          <label htmlFor="contact-contact" className="block text-cream-muted/50 font-body text-xs uppercase tracking-wider mb-1.5">Teléfono o Email</label>
           <input
             id="contact-contact"
             type="text"
             value={formData.contact}
             onChange={(e) => updateField('contact', e.target.value)}
-            className="w-full bg-green-dark/50 border border-white/10 rounded-lg px-4 py-2.5 text-white font-body text-sm placeholder:text-white/20 focus:outline-none focus:border-gold/50 focus:ring-1 focus:ring-gold/20 transition-all"
+            className="w-full rounded-lg px-4 py-2.5 font-body text-sm placeholder:text-cream-muted/20 focus:outline-none transition-all"
+            style={{
+              backgroundColor: 'rgba(26, 20, 18, 0.5)',
+              border: '1px solid rgba(255,255,255,0.06)',
+              color: '#F2E8DC',
+            }}
             placeholder="Teléfono o email"
+            onFocus={(e) => { e.target.style.borderColor = 'rgba(193, 80, 46, 0.4)'; e.target.style.boxShadow = '0 0 0 1px rgba(193, 80, 46, 0.15)' }}
+            onBlur={(e) => { e.target.style.borderColor = 'rgba(255,255,255,0.06)'; e.target.style.boxShadow = 'none' }}
             aria-invalid={!!formErrors.contact}
             aria-describedby={formErrors.contact ? 'contact-contact-error' : undefined}
           />
-          {formErrors.contact && <p id="contact-contact-error" className="text-red-cola text-xs mt-1">{formErrors.contact}</p>}
+          {formErrors.contact && <p id="contact-contact-error" className="text-paprika text-xs mt-1">{formErrors.contact}</p>}
         </motion.div>
         <motion.div
           initial={{ opacity: 0, x: -10 }}
@@ -107,50 +121,57 @@ export default function ContactForm() {
           viewport={{ once: true }}
           transition={{ duration: 0.3, ease: 'easeOut', delay: 0.15 }}
         >
-          <label htmlFor="contact-message" className="block text-white/60 font-body text-xs uppercase tracking-wider mb-1.5">Mensaje</label>
+          <label htmlFor="contact-message" className="block text-cream-muted/50 font-body text-xs uppercase tracking-wider mb-1.5">Mensaje</label>
           <textarea
             id="contact-message"
             rows={4}
             value={formData.message}
             onChange={(e) => updateField('message', e.target.value)}
-            className="w-full bg-green-dark/50 border border-white/10 rounded-lg px-4 py-2.5 text-white font-body text-sm placeholder:text-white/20 focus:outline-none focus:border-gold/50 focus:ring-1 focus:ring-gold/20 transition-all resize-none"
+            className="w-full rounded-lg px-4 py-2.5 font-body text-sm placeholder:text-cream-muted/20 focus:outline-none transition-all resize-none"
+            style={{
+              backgroundColor: 'rgba(26, 20, 18, 0.5)',
+              border: '1px solid rgba(255,255,255,0.06)',
+              color: '#F2E8DC',
+            }}
             placeholder="Escribe tu mensaje..."
+            onFocus={(e) => { e.target.style.borderColor = 'rgba(193, 80, 46, 0.4)'; e.target.style.boxShadow = '0 0 0 1px rgba(193, 80, 46, 0.15)' }}
+            onBlur={(e) => { e.target.style.borderColor = 'rgba(255,255,255,0.06)'; e.target.style.boxShadow = 'none' }}
             aria-invalid={!!formErrors.message}
             aria-describedby={formErrors.message ? 'contact-message-error' : undefined}
           />
-          {formErrors.message && <p id="contact-message-error" className="text-red-cola text-xs mt-1">{formErrors.message}</p>}
+          {formErrors.message && <p id="contact-message-error" className="text-paprika text-xs mt-1">{formErrors.message}</p>}
         </motion.div>
         <motion.button
           type="submit"
           disabled={formStatus === 'sending'}
-          whileHover={{ scale: 1.02, boxShadow: '0 0 20px rgba(244, 196, 48, 0.3)' }}
+          whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="w-full py-3 bg-gold text-green-brand font-semibold text-sm uppercase tracking-wider rounded-lg hover:bg-gold-dark transition-colors shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full py-3 text-cream font-semibold text-sm uppercase tracking-wider rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          style={{
+            backgroundColor: '#C1502E',
+            boxShadow: '0 2px 12px rgba(193, 80, 46, 0.2)',
+          }}
         >
           {formStatus === 'sending' ? 'Enviando...' : 'Enviar mensaje'}
         </motion.button>
         {formStatus === 'success' && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            role="status"
-            aria-live="polite"
-            className="bg-green-500/15 border border-green-400/20 rounded-lg p-3 text-center"
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
+            role="status" aria-live="polite"
+            className="rounded-lg p-3 text-center"
+            style={{ backgroundColor: 'rgba(74, 222, 128, 0.08)', border: '1px solid rgba(74, 222, 128, 0.15)' }}
           >
-            <p className="text-green-300 font-body text-sm">Mensaje enviado, te responderemos pronto.</p>
+            <p style={{ color: '#4ADE80' }} className="font-body text-sm">Mensaje enviado, te responderemos pronto.</p>
           </motion.div>
         )}
         {formStatus === 'error' && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            role="alert"
-            aria-live="assertive"
-            className="bg-red-cola/15 border border-red-cola/20 rounded-lg p-3 text-center"
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
+            role="alert" aria-live="assertive"
+            className="rounded-lg p-3 text-center"
+            style={{ backgroundColor: 'rgba(192, 64, 64, 0.08)', border: '1px solid rgba(192, 64, 64, 0.15)' }}
           >
-            <p className="text-red-300 font-body text-sm">
+            <p style={{ color: '#C04040' }} className="font-body text-sm">
               No se pudo enviar.{' '}
-              <a href={contactInfo.whatsapp} target="_blank" rel="noopener noreferrer" className="text-gold underline">
+              <a href={contactInfo.whatsapp} target="_blank" rel="noopener noreferrer" style={{ color: '#C1502E' }} className="underline">
                 Escríbenos por WhatsApp
               </a>
             </p>

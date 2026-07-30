@@ -8,7 +8,7 @@ export default function LocationMap() {
   const isOpen = useOpenStatus()
 
   return (
-    <SectionLayout id="location" icon={MapPin} title="DÓNDE ESTAMOS" bgColor="bg-green-dark">
+    <SectionLayout id="location" icon={MapPin} title="DÓNDE ESTAMOS" bgColor="bg-charcoal">
       <div className="grid lg:grid-cols-3 gap-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

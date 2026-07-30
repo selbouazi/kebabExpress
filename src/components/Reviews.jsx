@@ -20,7 +20,7 @@ export default function Reviews() {
   const opacity = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [0, 1, 1, 0])
 
   return (
-    <SectionLayout ref={sectionRef} id="reviews" icon={Star} title="RESEÑAS" bgColor="bg-green-brand">
+    <SectionLayout ref={sectionRef} id="reviews" icon={Star} title="RESEÑAS" bgColor="bg-charcoal-light">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -30,10 +30,10 @@ export default function Reviews() {
       >
         <div className="inline-flex items-center gap-2 mb-1">
           {Array.from({ length: Math.floor(averageRating) }).map((_, i) => (
-            <Star key={i} size={24} className="fill-gold text-gold" />
+            <Star key={i} size={24} className="fill-saffron text-saffron" />
           ))}
           {Array.from({ length: 5 - Math.floor(averageRating) }).map((_, i) => (
-            <Star key={i} size={24} className="fill-gold/30 text-gold/30" />
+            <Star key={i} size={24} className="fill-saffron/20 text-saffron/20" />
           ))}
         </div>
         <motion.div

@@ -53,28 +53,31 @@ export default function Hero() {
   }
 
   return (
-    <section ref={sectionRef} id="hero" className="relative min-h-screen flex items-center justify-center bg-green-dark overflow-hidden pt-20">
+    <section ref={sectionRef} id="hero" className="relative min-h-screen flex items-center justify-center bg-charcoal overflow-hidden pt-20">
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/og-image.jpg')", y: bgY, scale: bgScale }}
         />
         <motion.div
-          className="absolute inset-0 bg-gradient-to-b from-green-brand/70 via-green-brand/50 to-green-brand/80"
+          className="absolute inset-0 bg-gradient-to-b from-charcoal/80 via-charcoal/60 to-charcoal/90"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.8 }}
         />
+        <div className="absolute inset-0" style={{
+          background: 'linear-gradient(135deg, rgba(193, 80, 46, 0.08), transparent 50%, rgba(26, 20, 18, 0.4))',
+        }} />
       </div>
 
       <motion.div
-        className="absolute inset-0 bg-green-dark z-10"
+        className="absolute inset-0 bg-charcoal z-10"
         variants={curtainVariants}
         initial="hidden"
         animate="visible"
       />
       <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-green-brand to-green-dark z-10"
+        className="absolute inset-0 bg-gradient-to-r from-charcoal-light to-charcoal z-10"
         variants={curtainOverlayVariants}
         initial="hidden"
         animate="visible"
@@ -199,7 +202,7 @@ export default function Hero() {
         style={{
           borderLeft: '50vw solid transparent',
           borderRight: '50vw solid transparent',
-          borderBottom: '40px solid #12472B',
+          borderBottom: '40px solid #1A1412',
         }}
       />
     </section>

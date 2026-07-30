@@ -58,7 +58,7 @@ export default function Contact() {
   )
 
   return (
-    <SectionLayout id="contact" icon={MessageCircle} title="CONTACTO" bgColor="bg-green-brand">
+    <SectionLayout id="contact" icon={MessageCircle} title="CONTACTO" bgColor="bg-charcoal-light">
       <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 max-w-6xl mx-auto mb-12">
         {contactCards.map((card, i) => {
           if (card.social) {

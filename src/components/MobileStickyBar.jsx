@@ -12,14 +12,25 @@ export default function MobileStickyBar() {
       initial={{ y: 80 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.4, ease: 'easeOut', delay: 0.5 }}
-      className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-green-brand/95 backdrop-blur-xl border-t border-gold/20 px-4 py-2.5 shadow-[0_-4px_30px_rgba(0,0,0,0.3)]"
+      className="lg:hidden fixed bottom-0 left-0 right-0 z-40 px-4 py-2.5"
+      style={{
+        backgroundColor: 'rgba(38, 30, 26, 0.95)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+        borderTop: '1px solid rgba(193, 80, 46, 0.12)',
+        boxShadow: '0 -4px 30px rgba(0,0,0,0.3)',
+      }}
     >
       <div className="flex items-center gap-2 max-w-lg mx-auto">
         <motion.button
           onClick={() => scrollTo('#menu')}
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.95 }}
-          className="flex-1 flex items-center justify-center gap-2 py-2.5 border border-gold/30 text-gold text-xs uppercase tracking-widest rounded-full font-medium hover:bg-gold/10 transition-colors"
+          className="flex-1 flex items-center justify-center gap-2 py-2.5 text-cream text-xs uppercase tracking-widest rounded-full font-medium"
+          style={{
+            border: '1px solid rgba(193, 80, 46, 0.25)',
+            color: '#F2E8DC',
+          }}
         >
           <UtensilsCrossed size={14} />
           Ver menú
@@ -28,9 +39,14 @@ export default function MobileStickyBar() {
           href={contactInfo.whatsapp}
           target="_blank"
           rel="noopener noreferrer"
-          whileHover={{ scale: 1.03, boxShadow: '0 0 16px rgba(244, 196, 48, 0.3)' }}
+          whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.95 }}
-          className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-gold text-green-brand text-xs uppercase tracking-widest rounded-full font-semibold hover:bg-gold-dark transition-colors shadow-lg"
+          className="flex-1 flex items-center justify-center gap-2 py-2.5 text-cream text-xs uppercase tracking-widest rounded-full font-semibold"
+          style={{
+            backgroundColor: '#C1502E',
+            color: '#F2E8DC',
+            boxShadow: '0 2px 12px rgba(193, 80, 46, 0.25)',
+          }}
         >
           <MessageCircle size={14} />
           Pide por WhatsApp
