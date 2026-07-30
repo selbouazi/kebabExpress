@@ -91,7 +91,7 @@ export default function Hero() {
           animate="visible"
         >
           <motion.img
-            src="/logo.svg" width="160" height="160"
+            src="/logo.png" width="160" height="160"
             alt="Express Kebab"
             className="h-20 sm:h-28 lg:h-36 w-auto mx-auto mb-4 sm:mb-6 drop-shadow-[4px_4px_0_rgba(0,0,0,0.3)]"
           />

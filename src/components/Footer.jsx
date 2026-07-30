@@ -49,11 +49,10 @@ export default function Footer() {
     <footer className="relative bg-charcoal border-t overflow-hidden" style={{ borderColor: 'rgba(193, 80, 46, 0.08)' }}>
       <div className="absolute inset-0 pointer-events-none flex items-start justify-center select-none">
         <img
-          src="/logo.svg"
+          src="/logo.png"
           alt=""
           aria-hidden="true"
           className="w-[400px] h-auto mt-16 opacity-[0.04] sm:opacity-[0.03]"
-          style={{ filter: 'brightness(0) invert(1)' }}
         />
       </div>
 

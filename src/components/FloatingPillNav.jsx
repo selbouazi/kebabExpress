@@ -106,7 +106,7 @@ export default function FloatingPillNav() {
             aria-label="Inicio"
           >
             <img
-              src="/logo.svg"
+              src="/logo.png"
               alt="Express Kebab"
               width="24" height="24"
               className="h-6 w-auto"
@@ -171,7 +171,7 @@ export default function FloatingPillNav() {
         whileTap={{ scale: 0.9 }}
         aria-label="Abrir menú"
       >
-        <img src="/logo.svg" alt="" width="22" height="22" className="h-[22px] w-auto brightness-0 invert" />
+        <img src="/logo.png" alt="" width="22" height="22" className="h-[22px] w-auto" style={{ filter: 'brightness(0) invert(1)' }} />
       </motion.button>
 
       <AnimatePresence>
@@ -198,7 +198,7 @@ export default function FloatingPillNav() {
             </button>
 
             <img
-              src="/logo.svg"
+              src="/logo.png"
               alt="Express Kebab"
               width="56" height="56"
               className="h-14 w-auto mb-2"
