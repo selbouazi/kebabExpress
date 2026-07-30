@@ -100,15 +100,7 @@ export const extras = [
 ]
 
 export const offers = [
-  { id: 'o1', title: 'Martes de Kebab', desc: 'Kebab completo', price: 2.99, highlight: true },
+  { id: 'o1', title: 'Martes de Kebab', desc: 'Kebab completo', price: 2.99, highlight: true, dayOfWeek: 2 },
 ]
 
-export const scheduleData = {
-  monday:    { open: "12:00", close: "00:00" },
-  tuesday:   { open: "12:00", close: "00:00" },
-  wednesday: { open: "12:00", close: "00:00" },
-  thursday:  { open: "12:00", close: "00:00" },
-  friday:    { open: "12:00", close: "00:00" },
-  saturday:  { open: "12:00", close: "00:00" },
-  sunday:    { open: "12:00", close: "00:00" },
-}
+

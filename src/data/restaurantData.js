@@ -12,4 +12,9 @@ export const contactInfo = {
   mapsEmbed: "https://maps.google.com/maps?q=Ctra+de+Valls+1+El+Vendrell+Tarragona&t=&z=16&ie=UTF8&iwloc=&output=embed",
   instagram: "https://instagram.com/expresskebab",
   facebook: "https://facebook.com/expresskebab",
+  delivery: {
+    glovo: null,
+    uberEats: null,
+    justEat: null,
+  },
 }

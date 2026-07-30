@@ -1,56 +1,44 @@
 @import "tailwindcss";
 
 @theme {
-  --color-green-brand: #1B5E3A;
-  --color-green-card: #256F47;
-  --color-green-dark: #12472B;
-  --color-green-light: #3A8A5C;
-  --color-gold: #F4C430;
-  --color-gold-dark: #D4A824;
-  --color-cream: #F5F0E1;
-  --color-red-cola: #E63946;
+  --color-charcoal: #1A1412;
+  --color-charcoal-light: #261E1A;
+  --color-charcoal-surface: #2C2420;
+  --color-cream: #F2E8DC;
+  --color-cream-muted: #B8A89A;
+  --color-paprika: #C1502E;
+  --color-paprika-dark: #A04020;
+  --color-paprika-glow: rgba(193, 80, 46, 0.12);
+  --color-saffron: #D4A017;
+  --color-olive: #7A8153;
+  --color-red-cola: #C04040;
   --font-display: "Righteous", sans-serif;
+  --font-heading: "Domine", serif;
   --font-body: "Barlow", sans-serif;
 }
 
 @layer base {
-  html { scroll-behavior: smooth; }
-
   body {
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: #1B5E3A;
-    color: #FFFFFF;
+    background: #1A1412;
+    color: #F2E8DC;
   }
 
-  ::selection { background: #F4C430; color: #1B5E3A; }
+  ::selection { background: #C1502E; color: #F2E8DC; }
 
   ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: #12472B; }
-  ::-webkit-scrollbar-thumb { background: #F4C430; border-radius: 3px; }
-}
+  ::-webkit-scrollbar-track { background: #1A1412; }
+  ::-webkit-scrollbar-thumb { background: #C1502E; border-radius: 3px; }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-delay-1 { transition-delay: 0.08s; }
-.reveal-delay-2 { transition-delay: 0.16s; }
-.reveal-delay-3 { transition-delay: 0.24s; }
-.reveal-delay-4 { transition-delay: 0.32s; }
-.reveal-delay-5 { transition-delay: 0.40s; }
+  h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+  }
 
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fadeIn > * {
-  opacity: 0;
-  animation: fadeInUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  .font-display {
+    font-family: var(--font-display);
+  }
 }
 
 @keyframes shimmer {
@@ -60,7 +48,18 @@
 
 .section-divider {
   height: 4px;
-  background: linear-gradient(90deg, transparent, #F4C430, transparent);
+  background: linear-gradient(90deg, transparent, #C1502E, transparent);
+}
+
+.noise-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  pointer-events: none;
 }
 
 .section-pattern {
@@ -72,19 +71,28 @@
   inset: 0;
   opacity: 0.03;
   background-image:
-    radial-gradient(circle at 20% 50%, #F4C430 1px, transparent 1px),
-    radial-gradient(circle at 80% 50%, #F4C430 1px, transparent 1px);
-  background-size: 40px 40px;
+    linear-gradient(30deg, #C1502E 1px, transparent 1px),
+    linear-gradient(-30deg, #C1502E 1px, transparent 1px);
+  background-size: 50px 50px;
   pointer-events: none;
 }
 
 .glass-card {
-  background: linear-gradient(135deg, rgba(37, 111, 71, 0.8), rgba(18, 71, 43, 0.9));
+  background: linear-gradient(135deg, rgba(44, 36, 32, 0.85), rgba(26, 20, 18, 0.92));
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(244, 196, 48, 0.15);
+  border: 1px solid rgba(193, 80, 46, 0.12);
 }
 
 .glass-card:hover {
-  border-color: rgba(244, 196, 48, 0.5);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(244, 196, 48, 0.1);
+  border-color: rgba(193, 80, 46, 0.35);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(193, 80, 46, 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0s !important;
+    scroll-behavior: auto !important;
+  }
 }
