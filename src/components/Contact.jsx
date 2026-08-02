@@ -158,7 +158,7 @@ export default function Contact() {
           rel="noopener noreferrer"
           whileHover={{ scale: 1.05, boxShadow: '0 0 24px rgba(244, 196, 48, 0.3)' }}
           whileTap={{ scale: 0.95 }}
-          className="inline-flex items-center gap-2.5 px-8 py-3.5 bg-gold text-green-brand font-semibold text-base uppercase tracking-wider rounded-full hover:bg-gold-dark transition-colors shadow-xl"
+          className="btn btn-primary px-8 py-3.5 text-base"
         >
           <MessageCircle size={20} />
           Pide por WhatsApp

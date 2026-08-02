@@ -6,13 +6,9 @@ import SectionLayout from './SectionLayout'
 import ItemCard from './ItemCard'
 import Marquee from './Marquee'
 
-const tabIcons = [
-  <UtensilsCrossed size={14} className="inline" />,
-  <Sandwich size={14} className="inline" />,
-  <Pizza size={14} className="inline" />,
-  <Salad size={14} className="inline" />,
-  <Wine size={14} className="inline" />,
-]
+const tabIconComponents = [UtensilsCrossed, Sandwich, Pizza, Salad, Wine]
+
+const tabIcons = tabIconComponents.map((Icon, i) => <Icon key={i} size={14} className="inline" />)
 
 const marqueeItems = menuCategories
   .flatMap((cat) => cat.items)
@@ -62,6 +58,10 @@ export default function Menu() {
 
   const startIdx = page * perPage
   const visibleItems = items.slice(startIdx, startIdx + perPage)
+
+  const featuredIdx = items.findIndex((it) => it.isBestseller)
+  const featuredItem = items[featuredIdx >= 0 ? featuredIdx : 0] || null
+  const restItems = featuredItem ? items.filter((_, idx) => idx !== (featuredIdx >= 0 ? featuredIdx : 0)) : items
 
   return (
     <SectionLayout
@@ -171,11 +171,22 @@ export default function Menu() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3, ease: 'easeOut' }}
-                className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
+                className={items.length >= 5 ? 'grid grid-cols-2 md:grid-cols-4 gap-4 grid-flow-dense' : 'grid sm:grid-cols-2 lg:grid-cols-3 gap-4'}
               >
-                {items.map((item, i) => (
-                  <ItemCard key={item.id} item={item} i={i} />
-                ))}
+                {items.length >= 5 && featuredItem ? (
+                  <>
+                    <div className="md:col-span-2 md:row-span-2">
+                      <ItemCard key={featuredItem.id} item={featuredItem} i={0} featured fallbackIcon={tabIconComponents[activeTab]} />
+                    </div>
+                    {restItems.map((item, idx) => (
+                      <ItemCard key={item.id} item={item} i={idx + 1} fallbackIcon={tabIconComponents[activeTab]} />
+                    ))}
+                  </>
+                ) : (
+                  items.map((item, i) => (
+                    <ItemCard key={item.id} item={item} i={i} fallbackIcon={tabIconComponents[activeTab]} />
+                  ))
+                )}
               </motion.div>
             ) : (
               <motion.div
@@ -188,7 +199,7 @@ export default function Menu() {
                 style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}
               >
                 {visibleItems.map((item, i) => (
-                  <ItemCard key={item.id} item={item} i={i} />
+                  <ItemCard key={item.id} item={item} i={i} fallbackIcon={tabIconComponents[activeTab]} />
                 ))}
               </motion.div>
             )}

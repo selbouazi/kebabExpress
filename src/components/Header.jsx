@@ -109,7 +109,7 @@ export default function Header() {
               <motion.span
                 whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(244, 196, 48, 0.3)' }}
                 whileTap={{ scale: 0.95 }}
-                className="block ml-2 px-5 py-2 bg-gold text-green-brand font-semibold text-sm uppercase tracking-wider rounded-full hover:bg-gold-dark transition-colors shadow-lg cursor-pointer"
+                className="block ml-2 btn btn-primary px-5 py-2 text-xs"
               >
                 Pide ya
               </motion.span>

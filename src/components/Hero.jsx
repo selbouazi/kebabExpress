@@ -5,7 +5,7 @@ import { contactInfo } from '../data/restaurantData'
 import { scheduleData } from '../data/scheduleData'
 import { daysMap } from '../data/constants'
 import { reviews, totalReviews, averageRating } from '../data/reviewsData'
-import { Star } from 'lucide-react'
+import { Star, Truck, Timer, MessageCircle } from 'lucide-react'
 import { SocialLinks } from './SocialLinks'
 import AnimatedTitle from './AnimatedTitle'
 
@@ -60,7 +60,11 @@ export default function Hero() {
           style={{ backgroundImage: "url('/og-image.jpg')", y: bgY, scale: bgScale }}
         />
         <motion.div
-          className="absolute inset-0 bg-gradient-to-b from-charcoal/80 via-charcoal/60 to-charcoal/90"
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(180deg, rgba(10, 8, 7, 0.85) 0%, rgba(10, 8, 7, 0.45) 40%, rgba(10, 8, 7, 0.55) 62%, rgba(10, 8, 7, 0.92) 100%)',
+          }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.8 }}
@@ -132,30 +136,48 @@ export default function Hero() {
           variants={revealVariants}
           initial="hidden"
           animate="visible"
-          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-8"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-6"
         >
-          <motion.button
-            onClick={() => scrollTo('#menu')}
-            whileHover={{ scale: 1.05, backgroundColor: '#D4A824' }}
-            whileTap={{ scale: 0.95 }}
-            className="w-full sm:w-auto px-10 py-4 bg-gold text-green-brand font-semibold text-lg uppercase tracking-wider rounded shadow-lg hover:shadow-xl cursor-pointer"
-          >
-            Ver menú
-          </motion.button>
           <motion.a
             href={contactInfo.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.05, backgroundColor: '#F4C430', color: '#1B5E3A' }}
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="w-full sm:w-auto px-10 py-4 border-2 border-gold text-gold font-semibold text-lg uppercase tracking-wider rounded"
+            className="btn btn-primary w-full sm:w-auto px-10 py-4 text-base"
           >
+            <MessageCircle size={20} />
             Pide por WhatsApp
           </motion.a>
+          <motion.button
+            onClick={() => scrollTo('#menu')}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="btn btn-secondary w-full sm:w-auto px-10 py-4 text-base"
+          >
+            Ver menú completo
+          </motion.button>
         </motion.div>
 
         <motion.div
           custom={4}
+          variants={revealVariants}
+          initial="hidden"
+          animate="visible"
+          className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-6"
+        >
+          <span className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full border border-gold/20 text-xs text-cream/80">
+            <Truck size={13} className="text-gold" />
+            Domicilio gratis
+          </span>
+          <span className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full border border-gold/20 text-xs text-cream/80">
+            <Timer size={13} className="text-gold" />
+            Entrega en 20–30 min
+          </span>
+        </motion.div>
+
+        <motion.div
+          custom={5}
           variants={revealVariants}
           initial="hidden"
           animate="visible"
@@ -167,7 +189,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          custom={5}
+          custom={6}
           variants={revealVariants}
           initial="hidden"
           animate="visible"
@@ -190,7 +212,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          custom={6}
+          custom={7}
           variants={revealVariants}
           initial="hidden"
           animate="visible"

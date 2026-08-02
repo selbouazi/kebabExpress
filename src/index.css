@@ -12,6 +12,15 @@
   --color-saffron: #D4A017;
   --color-olive: #7A8153;
   --color-red-cola: #C04040;
+
+  --color-gold: #F4C430;
+  --color-gold-dark: #D4A824;
+  --color-green-brand: #1B5E3A;
+  --color-green-card: #256F47;
+  --color-green-dark: #12472B;
+  --color-green-light: #3A8A5C;
+  --color-green-deep: #0F3822;
+
   --font-display: "Righteous", sans-serif;
   --font-heading: "Domine", serif;
   --font-body: "Barlow", sans-serif;
@@ -34,6 +43,31 @@
 
   h1, h2, h3, h4 {
     font-family: var(--font-heading);
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: 0.01em;
+  }
+
+  h2 {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: 0.02em;
+  }
+
+  h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+  }
+
+  p {
+    line-height: 1.6;
   }
 
   .font-display {
@@ -78,9 +112,58 @@
 }
 
 .glass-card {
-  background: linear-gradient(135deg, rgba(44, 36, 32, 0.85), rgba(26, 20, 18, 0.92));
-  backdrop-filter: blur(8px);
+  background: linear-gradient(135deg, rgba(44, 36, 32, 0.72), rgba(26, 20, 18, 0.85));
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(193, 80, 46, 0.12);
+}
+
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.875rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .btn-primary {
+    background: var(--color-gold);
+    color: var(--color-green-brand);
+    box-shadow: 0 4px 20px rgba(244, 196, 48, 0.25);
+  }
+  .btn-primary:hover {
+    background: var(--color-gold-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 28px rgba(244, 196, 48, 0.35);
+  }
+
+  .btn-secondary {
+    border: 2px solid rgba(244, 196, 48, 0.55);
+    color: var(--color-gold);
+    background: transparent;
+  }
+  .btn-secondary:hover {
+    background: rgba(244, 196, 48, 0.1);
+    border-color: var(--color-gold);
+  }
+
+  .btn-ghost {
+    color: rgba(242, 232, 220, 0.55);
+    background: transparent;
+  }
+  .btn-ghost:hover {
+    color: var(--color-cream);
+    background: rgba(255, 255, 255, 0.06);
+  }
 }
 
 .glass-card:hover {

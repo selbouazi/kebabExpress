@@ -28,7 +28,16 @@ export default function LocationMap() {
             title="Express Kebab"
             className="w-full h-full transition-all duration-500"
           />
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-green-dark/80 to-transparent h-16 pointer-events-none" />
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-charcoal/70 to-transparent h-16 pointer-events-none" />
+          <a
+            href={contactInfo.mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute bottom-3 right-3 z-10 inline-flex items-center gap-1.5 bg-charcoal/80 backdrop-blur-sm border border-gold/20 text-cream/80 text-[10px] px-2.5 py-1 rounded-full hover:text-gold transition-colors"
+          >
+            <Navigation size={10} className="text-gold" />
+            Ver en Google Maps
+          </a>
         </motion.div>
 
         <div className="space-y-4">

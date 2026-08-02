@@ -5,6 +5,16 @@ import { reviews, totalReviews, averageRating, googleMapsUrl } from '../data/rev
 import SectionLayout from './SectionLayout'
 import CountUp from './CountUp'
 
+const avatarPalette = [
+  { bg: 'rgba(244, 196, 48, 0.12)', fg: '#F4C430', ring: 'rgba(244, 196, 48, 0.3)' },
+  { bg: 'rgba(193, 80, 46, 0.14)', fg: '#E07A4F', ring: 'rgba(193, 80, 46, 0.3)' },
+  { bg: 'rgba(58, 138, 92, 0.16)', fg: '#5BB27E', ring: 'rgba(58, 138, 92, 0.35)' },
+  { bg: 'rgba(212, 160, 23, 0.14)', fg: '#D4A017', ring: 'rgba(212, 160, 23, 0.3)' },
+]
+
+const initialsOf = (name) =>
+  name.split(' ').filter(Boolean).slice(0, 2).map((w) => w[0]).join('').toUpperCase()
+
 export default function Reviews() {
   const sectionRef = useRef(null)
   const numberRef = useRef(null)
@@ -93,9 +103,21 @@ export default function Reviews() {
                 {r.text}
               </p>
             </div>
-            <div className="flex items-center justify-between mt-4 pt-3 border-t border-white/5">
-              <p className="text-gold font-semibold text-xs uppercase tracking-wider">{r.name}</p>
-              <span className="text-white/30 text-[10px]">{r.date}</span>
+            <div className="flex items-center justify-between gap-2 mt-4 pt-3 border-t border-white/5">
+              <div className="flex items-center gap-2 min-w-0">
+                <span
+                  className="w-7 h-7 rounded-full flex items-center justify-center text-[10px] font-bold uppercase shrink-0 ring-1"
+                  style={{
+                    backgroundColor: avatarPalette[i % avatarPalette.length].bg,
+                    color: avatarPalette[i % avatarPalette.length].fg,
+                    borderColor: avatarPalette[i % avatarPalette.length].ring,
+                  }}
+                >
+                  {initialsOf(r.name)}
+                </span>
+                <p className="text-gold font-semibold text-xs uppercase tracking-wider truncate">{r.name}</p>
+              </div>
+              <span className="text-white/30 text-[10px] shrink-0">{r.date}</span>
             </div>
           </motion.div>
         ))}
@@ -112,7 +134,7 @@ export default function Reviews() {
           href={googleMapsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-6 py-3 border border-gold/30 text-gold/80 font-medium text-sm uppercase tracking-wider rounded-full hover:bg-gold/10 hover:text-gold hover:border-gold/60 transition-all"
+          className="btn btn-secondary px-6 py-3"
         >
           <ExternalLink size={15} />
           Ver todas en Google
@@ -123,7 +145,7 @@ export default function Reviews() {
           rel="noopener noreferrer"
           whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(244, 196, 48, 0.3)' }}
           whileTap={{ scale: 0.95 }}
-          className="inline-flex items-center gap-2 px-8 py-3 bg-gold text-green-brand font-semibold text-sm uppercase tracking-wider rounded-full hover:bg-gold-dark transition-colors shadow-lg"
+          className="btn btn-primary px-8 py-3"
         >
           <MessageCircle size={16} />
           Déjanos tu reseña

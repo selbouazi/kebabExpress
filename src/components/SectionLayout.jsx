@@ -10,7 +10,7 @@ const SectionLayout = forwardRef(({ id, icon: Icon, title, subtitle, children, b
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className={`relative pt-16 pb-20 sm:pt-20 sm:pb-24 ${bgColor} section-pattern overflow-hidden`}
+      className={`relative pt-20 pb-28 sm:pt-28 sm:pb-32 ${bgColor} section-pattern overflow-hidden`}
     >
       <div className="section-divider absolute top-0 left-0 right-0" />
 
@@ -34,7 +34,7 @@ const SectionLayout = forwardRef(({ id, icon: Icon, title, subtitle, children, b
             <span className="block w-12 h-px bg-gradient-to-l from-transparent to-gold/60" />
           </div>
           {subtitle && (
-            <p className="text-white/50 font-body text-sm mt-3 tracking-wide max-w-md mx-auto">{subtitle}</p>
+            <p className="text-white/60 font-body text-sm mt-3 tracking-wide max-w-md mx-auto">{subtitle}</p>
           )}
         </motion.div>
 

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { contactInfo } from '../data/restaurantData'
-import { X } from 'lucide-react'
+import { X, Menu } from 'lucide-react'
 
 const links = [
   { label: 'Inicio', href: '#hero' },
@@ -158,21 +158,43 @@ export default function FloatingPillNav() {
 
   return (
     <>
-      <motion.button
-        onClick={() => setMobileOpen(true)}
-        className="fixed z-50 w-12 h-12 rounded-full flex items-center justify-center"
-        style={{
-          bottom: 'calc(80px + env(safe-area-inset-bottom, 0px))',
-          left: 'max(16px, env(safe-area-inset-left, 0px))',
-          backgroundColor: '#C1502E',
-          boxShadow: '0 4px 20px rgba(193,80,46,0.35)',
-        }}
-        whileHover={{ scale: 1.08 }}
-        whileTap={{ scale: 0.9 }}
-        aria-label="Abrir menú"
-      >
-        <img src="/logo.png" alt="" width="22" height="22" className="h-[22px] w-auto" style={{ filter: 'brightness(0) invert(1)' }} />
-      </motion.button>
+      <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none" style={{ paddingTop: 'clamp(10px, 2vh, 16px)' }}>
+        <motion.div
+          layout
+          transition={{ duration: 0.5, ease: [0.65, 0, 0.35, 1] }}
+          className="flex items-center rounded-full pointer-events-auto"
+          style={{
+            backgroundColor: 'rgba(38, 30, 26, 0.85)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
+            border: '1px solid rgba(193, 80, 46, 0.14)',
+            boxShadow: '0 2px 16px rgba(0,0,0,0.35)',
+          }}
+        >
+          <a
+            href="#hero"
+            onClick={(e) => { e.preventDefault(); scrollTo('#hero') }}
+            className="w-[40px] h-[40px] flex items-center justify-center shrink-0"
+            aria-label="Inicio"
+          >
+            <img src="/logo.png" alt="Express Kebab" width="22" height="22" className="h-[22px] w-auto" />
+          </a>
+          <div className="w-px h-5 shrink-0 mx-1" style={{ backgroundColor: 'rgba(193, 80, 46, 0.15)' }} />
+          <span className="text-cream-muted/70 text-[10px] uppercase tracking-[0.18em] font-medium hidden min-[380px]:block">
+            {links.find((l) => l.href === activeSection)?.label || 'Inicio'}
+          </span>
+          <button
+            onClick={() => setMobileOpen(true)}
+            className="ml-2 mr-1.5 w-9 h-9 rounded-full flex items-center justify-center"
+            style={{ backgroundColor: 'rgba(193, 80, 46, 0.18)' }}
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.9 }}
+            aria-label="Abrir menú"
+          >
+            <Menu size={16} className="text-cream" />
+          </button>
+        </motion.div>
+      </nav>
 
       <AnimatePresence>
         {mobileOpen && (
