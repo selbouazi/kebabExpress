@@ -20,6 +20,7 @@ export default function ContactForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (e.target._gotcha?.value) return
     const errs = validate()
     setFormErrors(errs)
     if (Object.keys(errs).length) return
@@ -57,12 +58,22 @@ export default function ContactForm() {
         <div className="inline-flex items-center justify-center w-12 h-12 rounded-full mb-3 mx-auto"
           style={{ backgroundColor: 'rgba(193, 80, 46, 0.1)', boxShadow: 'inset 0 0 0 2px rgba(193, 80, 46, 0.08)' }}
         >
-          <Send size={20} style={{ color: '#C1502E' }} />
+          <Send size={20} className="text-paprika" />
         </div>
         <h3 className="text-xl font-heading text-cream uppercase tracking-wider">Escríbenos</h3>
         <p className="text-cream-muted/50 font-body text-xs mt-1">Te responderemos en menos de 24h</p>
       </div>
-      <form onSubmit={handleSubmit} className="glass-card rounded-xl p-6 shadow-lg space-y-4">
+      <form onSubmit={handleSubmit} noValidate className="glass-card rounded-xl p-6 shadow-lg space-y-4">
+        <div className="hidden" aria-hidden="true">
+          <label htmlFor="contact-website">No rellenar</label>
+          <input
+            id="contact-website"
+            type="text"
+            name="_gotcha"
+            tabIndex="-1"
+            autoComplete="off"
+          />
+        </div>
         <motion.div
           initial={{ opacity: 0, x: -10 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -72,7 +83,10 @@ export default function ContactForm() {
           <label htmlFor="contact-name" className="block text-cream-muted/50 font-body text-xs uppercase tracking-wider mb-1.5">Nombre</label>
           <input
             id="contact-name"
+            name="name"
             type="text"
+            required
+            autoComplete="name"
             value={formData.name}
             onChange={(e) => updateField('name', e.target.value)}
             className="w-full rounded-lg px-4 py-2.5 text-cream font-body text-sm placeholder:text-cream-muted/20 focus:outline-none transition-all"
@@ -98,7 +112,10 @@ export default function ContactForm() {
           <label htmlFor="contact-contact" className="block text-cream-muted/50 font-body text-xs uppercase tracking-wider mb-1.5">Teléfono o Email</label>
           <input
             id="contact-contact"
+            name="contact"
             type="text"
+            required
+            autoComplete="off"
             value={formData.contact}
             onChange={(e) => updateField('contact', e.target.value)}
             className="w-full rounded-lg px-4 py-2.5 font-body text-sm placeholder:text-cream-muted/20 focus:outline-none transition-all"
@@ -124,7 +141,10 @@ export default function ContactForm() {
           <label htmlFor="contact-message" className="block text-cream-muted/50 font-body text-xs uppercase tracking-wider mb-1.5">Mensaje</label>
           <textarea
             id="contact-message"
+            name="message"
+            required
             rows={4}
+            maxLength={2000}
             value={formData.message}
             onChange={(e) => updateField('message', e.target.value)}
             className="w-full rounded-lg px-4 py-2.5 font-body text-sm placeholder:text-cream-muted/20 focus:outline-none transition-all resize-none"
@@ -146,9 +166,8 @@ export default function ContactForm() {
           disabled={formStatus === 'sending'}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="w-full py-3 text-cream font-semibold text-sm uppercase tracking-wider rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full py-3 text-cream font-semibold text-sm uppercase tracking-wider rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed bg-paprika"
           style={{
-            backgroundColor: '#C1502E',
             boxShadow: '0 2px 12px rgba(193, 80, 46, 0.2)',
           }}
         >

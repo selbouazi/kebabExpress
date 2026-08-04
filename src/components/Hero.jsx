@@ -96,6 +96,8 @@ export default function Hero() {
         >
           <video
             autoPlay muted playsInline
+            aria-hidden="true"
+            tabIndex={-1}
             className="h-20 sm:h-28 lg:h-36 w-auto mx-auto mb-4 sm:mb-6"
             style={{ filter: 'drop-shadow(4px 4px 0 rgba(0,0,0,0.3))' }}
           >
@@ -126,7 +128,7 @@ export default function Hero() {
           className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-6 sm:mb-8 border border-gold/20"
         >
           <span className={`w-2 h-2.5 sm:w-2.5 sm:h-2.5 rounded-full ${isOpen ? 'bg-green-400 animate-pulse' : 'bg-red-400'}`} />
-          <span className={`font-body text-[10px] sm:text-xs uppercase tracking-widest font-medium ${isOpen ? 'text-green-300' : 'text-red-300'}`}>
+          <span className={`font-body text-tiny sm:text-xs uppercase tracking-widest font-medium ${isOpen ? 'text-green-300' : 'text-red-300'}`}>
             {isOpen ? `Abierto · hasta las ${todaySchedule?.close || '00:00'}` : 'Cerrado ahora'}
           </span>
         </motion.div>
@@ -205,8 +207,8 @@ export default function Hero() {
                   <Star key={j} size={10} className="fill-gold text-gold" />
                 ))}
               </div>
-              <p className="text-white/60 text-[10px] leading-relaxed italic line-clamp-2">&ldquo;{r.text}&rdquo;</p>
-              <p className="text-gold font-semibold text-[10px] uppercase mt-1 tracking-wide">{r.name}</p>
+              <p className="text-white/60 text-tiny leading-relaxed italic line-clamp-2">&ldquo;{r.text}&rdquo;</p>
+              <p className="text-gold font-semibold text-tiny uppercase mt-1 tracking-wide">{r.name}</p>
             </div>
           ))}
         </motion.div>

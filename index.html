@@ -7,11 +7,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Express Kebab — El mejor kebab de la zona. Pollo, ternera, mixto, pizzas, menú infantil. Domicilio gratis. Llama ya." />
     <meta name="keywords" content="kebab, restaurante kebab, pizza kebab, comida rápida, domicilio, express kebab" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://kebabexpress.com/" />
+    <meta name="theme-color" content="#1A1412" />
     <meta property="og:title" content="Express Kebab — El mejor kebab" />
     <meta property="og:description" content="Pollos, ternera, mixto, pizzas, menú infantil. Domicilio gratis. ¡Pide ya!" />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="restaurant" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:site_name" content="Express Kebab" />
     <meta property="og:url" content="https://kebabexpress.com" />
-    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:image" content="https://kebabexpress.com/og-image.jpg" />
+    <meta property="og:image:alt" content="Express Kebab — El mejor kebab de la zona" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Express Kebab — El mejor kebab" />
+    <meta name="twitter:description" content="Pollos, ternera, mixto, pizzas, menú infantil. Domicilio gratis. ¡Pide ya!" />
+    <meta name="twitter:image" content="https://kebabexpress.com/og-image.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Righteous&family=Domine:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -20,18 +32,30 @@
       "@context": "https://schema.org",
       "@type": "Restaurant",
       "name": "Express Kebab",
-      "image": "/og-image.jpg",
+      "url": "https://kebabexpress.com",
+      "image": "https://kebabexpress.com/og-image.jpg",
       "description": "El mejor kebab, pizzas y menú infantil. Domicilio gratis.",
       "servesCuisine": "Turkish",
+      "priceRange": "€",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Ctra. de Valls, 1",
-        "addressLocality": "43715 El Vendrell, Tarragona",
+        "addressLocality": "El Vendrell",
+        "postalCode": "43715",
+        "addressRegion": "Tarragona",
         "addressCountry": "ES"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 41.2263722,
+        "longitude": 1.5317076
       },
       "telephone": "+34977663765",
       "openingHoursSpecification": [
-        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "12:00", "closes": "00:00" }
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "12:00", "closes": "23:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday"], "opens": "12:00", "closes": "00:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "13:00", "closes": "00:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday"], "opens": "13:00", "closes": "22:30" }
       ]
     }
     </script>
