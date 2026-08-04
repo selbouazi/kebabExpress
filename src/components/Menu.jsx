@@ -142,8 +142,7 @@ export default function Menu() {
               disabled={page === 0}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="absolute -left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full flex items-center justify-center disabled:opacity-20 disabled:cursor-not-allowed"
-              style={{ backgroundColor: 'rgba(193, 80, 46, 0.12)' }}
+              className="absolute -left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full flex items-center justify-center disabled:opacity-20 disabled:cursor-not-allowed bg-paprika-glow"
               aria-label="Anterior"
             >
               <ChevronLeft size={18} className="text-cream" />
@@ -153,8 +152,7 @@ export default function Menu() {
               disabled={page >= totalPages - 1}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="absolute -right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full flex items-center justify-center disabled:opacity-20 disabled:cursor-not-allowed"
-              style={{ backgroundColor: 'rgba(193, 80, 46, 0.12)' }}
+              className="absolute -right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full flex items-center justify-center disabled:opacity-20 disabled:cursor-not-allowed bg-paprika-glow"
               aria-label="Siguiente"
             >
               <ChevronRight size={18} className="text-cream" />
@@ -171,7 +169,7 @@ export default function Menu() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3, ease: 'easeOut' }}
-                className={items.length >= 5 ? 'grid grid-cols-2 md:grid-cols-4 gap-4 grid-flow-dense' : 'grid sm:grid-cols-2 lg:grid-cols-3 gap-4'}
+                className={items.length >= 5 ? 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 grid-flow-dense' : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'}
               >
                 {items.length >= 5 && featuredItem ? (
                   <>
@@ -195,8 +193,7 @@ export default function Menu() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -40 }}
                 transition={{ duration: 0.25, ease: 'easeOut' }}
-                className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
-                style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
               >
                 {visibleItems.map((item, i) => (
                   <ItemCard key={item.id} item={item} i={i} fallbackIcon={tabIconComponents[activeTab]} />
@@ -229,7 +226,7 @@ export default function Menu() {
                     />
                   ))}
                 </div>
-                <span className="text-cream-muted/30 text-[10px] ml-2">
+                <span className="text-cream-muted/30 text-tiny ml-2">
                   {startIdx + 1}–{Math.min(startIdx + perPage, items.length)} de {items.length}
                 </span>
               </>
@@ -275,7 +272,7 @@ export default function Menu() {
                   <div className="flex items-center gap-2 min-w-0">
                     <span className="text-cream-muted/70 text-xs font-medium truncate">{e.name}</span>
                     {e.allergens?.length > 0 && (
-                      <span className="text-[10px] shrink-0">{e.allergens.map((a) => allergenLabels[a]).join('')}</span>
+                      <span className="text-tiny shrink-0">{e.allergens.map((a) => allergenLabels[a]).join('')}</span>
                     )}
                   </div>
                   <span className="text-saffron font-bold text-sm whitespace-nowrap ml-2">

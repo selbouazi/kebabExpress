@@ -25,7 +25,7 @@ function DayRow({ day, schedule, isToday }) {
       <span>{dayNames[day]}</span>
       <span className={isToday ? 'text-saffron' : ''}>
         {schedule.open} — {schedule.close}
-        {isToday && <span className="ml-1.5 text-[10px]">← hoy</span>}
+        {isToday && <span className="ml-1.5 text-tiny">← hoy</span>}
       </span>
     </div>
   )
@@ -95,7 +95,7 @@ export default function Footer() {
           </motion.div>
 
           <motion.div {...fadeUp} transition={{ duration: 0.4, ease: 'easeOut', delay: 0.05 }} className="lg:col-span-3">
-            <h4 className="text-cream-muted/50 text-[10px] uppercase tracking-[0.2em] font-semibold mb-3">Enlaces</h4>
+            <h4 className="text-cream-muted/50 text-tiny uppercase tracking-[0.2em] font-semibold mb-3">Enlaces</h4>
             <ul className="space-y-1.5">
               {quickLinks.map((link) => (
                 <li key={link.href}>
@@ -112,7 +112,7 @@ export default function Footer() {
           </motion.div>
 
           <motion.div {...fadeUp} transition={{ duration: 0.4, ease: 'easeOut', delay: 0.1 }} className="lg:col-span-4">
-            <h4 className="text-cream-muted/50 text-[10px] uppercase tracking-[0.2em] font-semibold mb-3">Horario</h4>
+            <h4 className="text-cream-muted/50 text-tiny uppercase tracking-[0.2em] font-semibold mb-3">Horario</h4>
             <div className="space-y-0.5">
               {Object.entries(scheduleData).map(([day, schedule]) => (
                 <DayRow key={day} day={day} schedule={schedule} isToday={day === todayKey} />
@@ -149,11 +149,11 @@ export default function Footer() {
           className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 mt-1"
           style={{ borderTop: '1px solid rgba(255,255,255,0.03)' }}
         >
-          <p className="text-cream-muted/25 text-[10px] tracking-wider">&copy; {year} Express Kebab</p>
+          <p className="text-cream-muted/25 text-tiny tracking-wider">&copy; {year} Express Kebab</p>
           <div className="flex gap-4">
-            <Link to="/aviso-legal" className="text-cream-muted/25 hover:text-cream-muted/60 text-[10px] transition-colors">Aviso Legal</Link>
-            <Link to="/privacidad" className="text-cream-muted/25 hover:text-cream-muted/60 text-[10px] transition-colors">Privacidad</Link>
-            <Link to="/cookies" className="text-cream-muted/25 hover:text-cream-muted/60 text-[10px] transition-colors">Cookies</Link>
+            <Link to="/aviso-legal" className="text-cream-muted/25 hover:text-cream-muted/60 text-tiny transition-colors">Aviso Legal</Link>
+            <Link to="/privacidad" className="text-cream-muted/25 hover:text-cream-muted/60 text-tiny transition-colors">Privacidad</Link>
+            <Link to="/cookies" className="text-cream-muted/25 hover:text-cream-muted/60 text-tiny transition-colors">Cookies</Link>
           </div>
         </div>
       </div>

@@ -10,8 +10,6 @@
   --color-paprika-dark: #A04020;
   --color-paprika-glow: rgba(193, 80, 46, 0.12);
   --color-saffron: #D4A017;
-  --color-olive: #7A8153;
-  --color-red-cola: #C04040;
 
   --color-gold: #F4C430;
   --color-gold-dark: #D4A824;
@@ -19,11 +17,14 @@
   --color-green-card: #256F47;
   --color-green-dark: #12472B;
   --color-green-light: #3A8A5C;
-  --color-green-deep: #0F3822;
 
   --font-display: "Righteous", sans-serif;
   --font-heading: "Domine", serif;
   --font-body: "Barlow", sans-serif;
+
+  --text-nano: 0.5625rem;
+  --text-tiny: 0.625rem;
+  --text-micro: 0.6875rem;
 }
 
 @layer base {
@@ -136,14 +137,14 @@
   }
 
   .btn-primary {
-    background: var(--color-gold);
-    color: var(--color-green-brand);
-    box-shadow: 0 4px 20px rgba(244, 196, 48, 0.25);
+    background: var(--color-paprika);
+    color: var(--color-cream);
+    box-shadow: 0 4px 20px rgba(193, 80, 46, 0.35);
   }
   .btn-primary:hover {
-    background: var(--color-gold-dark);
+    background: var(--color-paprika-dark);
     transform: translateY(-1px);
-    box-shadow: 0 8px 28px rgba(244, 196, 48, 0.35);
+    box-shadow: 0 8px 28px rgba(193, 80, 46, 0.45);
   }
 
   .btn-secondary {

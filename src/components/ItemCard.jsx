@@ -54,7 +54,7 @@ export default function ItemCard({ item, i, featured = false, fallbackIcon }) {
                   <Icon size={featured ? 76 : 48} className="text-cream-muted/15 group-hover:text-saffron/25 transition-colors duration-500" />
                 </motion.div>
                 {featured && (
-                  <span className="text-[9px] uppercase tracking-[0.25em] text-cream-muted/25 font-medium" style={{ transform: 'translateZ(20px)' }}>
+                  <span className="text-nano uppercase tracking-[0.25em] text-cream-muted/25 font-medium" style={{ transform: 'translateZ(20px)' }}>
                     Foto próximamente
                   </span>
                 )}
@@ -83,14 +83,10 @@ export default function ItemCard({ item, i, featured = false, fallbackIcon }) {
 
             {item.isBestseller && (
               <span
-                className={`absolute top-3 left-3 text-cream font-bold rounded shadow-lg flex items-center gap-1 z-10 ${
+                className={`absolute top-3 left-3 text-cream font-bold rounded shadow-lg flex items-center gap-1 z-10 bg-paprika ${
                   featured ? 'text-xs px-3 py-1.5' : 'text-xs px-2.5 py-1'
                 }`}
-                style={{
-                  transformStyle: 'preserve-3d',
-                  transform: 'translateZ(20px)',
-                  backgroundColor: '#C1502E',
-                }}
+                style={{ transformStyle: 'preserve-3d', transform: 'translateZ(20px)' }}
               >
                 <Flame size={featured ? 14 : 12} />
                 {featured ? 'Más vendido' : 'Más vendido'}
@@ -107,7 +103,7 @@ export default function ItemCard({ item, i, featured = false, fallbackIcon }) {
                 {item.tags.map((tag) => (
                   <span
                     key={tag}
-                    className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium uppercase tracking-wider ring-1 ${tagStyles[tag] || 'bg-white/5 text-cream-muted/60 ring-white/10'}`}
+                    className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-tiny font-medium uppercase tracking-wider ring-1 ${tagStyles[tag] || 'bg-white/5 text-cream-muted/60 ring-white/10'}`}
                   >
                     {tagIcons[tag]}
                     {tag}

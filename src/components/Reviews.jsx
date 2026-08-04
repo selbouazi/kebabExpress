@@ -42,7 +42,15 @@ export default function Reviews() {
           {Array.from({ length: Math.floor(averageRating) }).map((_, i) => (
             <Star key={i} size={24} className="fill-saffron text-saffron" />
           ))}
-          {Array.from({ length: 5 - Math.floor(averageRating) }).map((_, i) => (
+          {averageRating % 1 !== 0 && (
+            <span className="relative inline-flex">
+              <Star size={24} className="fill-saffron/20 text-saffron/20" />
+              <span className="absolute inset-0 overflow-hidden" style={{ width: '50%' }}>
+                <Star size={24} className="fill-saffron text-saffron" />
+              </span>
+            </span>
+          )}
+          {Array.from({ length: 5 - Math.ceil(averageRating) }).map((_, i) => (
             <Star key={i} size={24} className="fill-saffron/20 text-saffron/20" />
           ))}
         </div>
@@ -106,7 +114,7 @@ export default function Reviews() {
             <div className="flex items-center justify-between gap-2 mt-4 pt-3 border-t border-white/5">
               <div className="flex items-center gap-2 min-w-0">
                 <span
-                  className="w-7 h-7 rounded-full flex items-center justify-center text-[10px] font-bold uppercase shrink-0 ring-1"
+                  className="w-7 h-7 rounded-full flex items-center justify-center text-tiny font-bold uppercase shrink-0 ring-1"
                   style={{
                     backgroundColor: avatarPalette[i % avatarPalette.length].bg,
                     color: avatarPalette[i % avatarPalette.length].fg,
@@ -117,7 +125,7 @@ export default function Reviews() {
                 </span>
                 <p className="text-gold font-semibold text-xs uppercase tracking-wider truncate">{r.name}</p>
               </div>
-              <span className="text-white/30 text-[10px] shrink-0">{r.date}</span>
+              <span className="text-white/30 text-tiny shrink-0">{r.date}</span>
             </div>
           </motion.div>
         ))}

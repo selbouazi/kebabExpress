@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { contactInfo } from '../data/restaurantData'
+import { averageRating } from '../data/reviewsData'
 import { X, Menu } from 'lucide-react'
 
 const links = [
@@ -18,7 +19,7 @@ function NavLink({ href, label, active, onClick }) {
     <a
       href={href}
       onClick={(e) => { e.preventDefault(); onClick(href) }}
-      className={`relative px-3 py-1.5 text-[11px] uppercase tracking-[0.15em] font-medium rounded-full transition-all duration-300 ${
+      className={`relative px-3 py-1.5 text-micro uppercase tracking-[0.15em] font-medium rounded-full transition-all duration-300 ${
         active
           ? 'text-cream'
           : 'text-cream-muted/50 hover:text-cream/80'
@@ -137,12 +138,12 @@ export default function FloatingPillNav() {
                 ))}
 
                 <div className="flex items-center gap-2 ml-2 pl-3 shrink-0" style={{ borderLeft: '1px solid rgba(193, 80, 46, 0.12)' }}>
-                  <span className="text-saffron font-bold text-[10px]">4.5</span>
+                  <span className="text-saffron font-bold text-tiny">{averageRating}</span>
                   <a
                     href={contactInfo.whatsapp}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-3.5 py-1.5 bg-paprika text-cream font-semibold text-[10px] uppercase tracking-widest rounded-full hover:bg-paprika-dark transition-colors"
+                    className="px-3.5 py-1.5 bg-paprika text-cream font-semibold text-tiny uppercase tracking-widest rounded-full hover:bg-paprika-dark transition-colors"
                     style={{ boxShadow: '0 2px 12px rgba(193, 80, 46, 0.25)' }}
                   >
                     Pide ya
@@ -180,7 +181,7 @@ export default function FloatingPillNav() {
             <img src="/logo.png" alt="Express Kebab" width="22" height="22" className="h-[22px] w-auto" />
           </a>
           <div className="w-px h-5 shrink-0 mx-1" style={{ backgroundColor: 'rgba(193, 80, 46, 0.15)' }} />
-          <span className="text-cream-muted/70 text-[10px] uppercase tracking-[0.18em] font-medium hidden min-[380px]:block">
+          <span className="text-cream-muted/70 text-tiny uppercase tracking-[0.18em] font-medium hidden min-[380px]:block">
             {links.find((l) => l.href === activeSection)?.label || 'Inicio'}
           </span>
           <button

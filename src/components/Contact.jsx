@@ -94,7 +94,7 @@ export default function Contact() {
                   {Object.entries(scheduleData).map(([day, schedule]) => (
                     <div
                       key={day}
-                      className={`flex justify-between text-[11px] ${
+                      className={`flex justify-between text-micro ${
                         day === todayKey ? 'text-gold font-medium' : 'text-white/50 font-light'
                       }`}
                     >
@@ -131,12 +131,12 @@ export default function Contact() {
                 </div>
                 <div className="min-w-0">
                   <p className="text-xs font-semibold text-white uppercase tracking-wide">{card.label}</p>
-                  {card.value && <p className="text-white/50 font-light text-[11px] mt-0.5">{card.value}</p>}
+                  {card.value && <p className="text-white/50 font-light text-micro mt-0.5">{card.value}</p>}
                 </div>
                 {card.href && <ChevronRight size={14} className="text-gold/40 ml-auto flex-shrink-0" />}
               </div>
               {card.label === 'Dirección' && (
-                <p className="text-white/45 font-light text-[11px] mt-2 pl-14">{contactInfo.address.city}</p>
+                <p className="text-white/45 font-light text-micro mt-2 pl-14">{contactInfo.address.city}</p>
               )}
             </Wrapper>
           )

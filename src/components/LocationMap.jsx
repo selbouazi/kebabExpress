@@ -33,7 +33,7 @@ export default function LocationMap() {
             href={contactInfo.mapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="absolute bottom-3 right-3 z-10 inline-flex items-center gap-1.5 bg-charcoal/80 backdrop-blur-sm border border-gold/20 text-cream/80 text-[10px] px-2.5 py-1 rounded-full hover:text-gold transition-colors"
+            className="absolute bottom-3 right-3 z-10 inline-flex items-center gap-1.5 bg-charcoal/80 backdrop-blur-sm border border-gold/20 text-cream/80 text-tiny px-2.5 py-1 rounded-full hover:text-gold transition-colors"
           >
             <Navigation size={10} className="text-gold" />
             Ver en Google Maps
