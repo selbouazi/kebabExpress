@@ -150,8 +150,9 @@ export default function Footer() {
           style={{ borderTop: '1px solid rgba(255,255,255,0.03)' }}
         >
           <p className="text-cream-muted/25 text-tiny tracking-wider">&copy; {year} Express Kebab</p>
-          <div className="flex gap-4">
+<div className="flex flex-wrap gap-x-4 gap-y-1">
             <Link to="/aviso-legal" className="text-cream-muted/25 hover:text-cream-muted/60 text-tiny transition-colors">Aviso Legal</Link>
+            <Link to="/terminos" className="text-cream-muted/25 hover:text-cream-muted/60 text-tiny transition-colors">Términos</Link>
             <Link to="/privacidad" className="text-cream-muted/25 hover:text-cream-muted/60 text-tiny transition-colors">Privacidad</Link>
             <Link to="/cookies" className="text-cream-muted/25 hover:text-cream-muted/60 text-tiny transition-colors">Cookies</Link>
           </div>

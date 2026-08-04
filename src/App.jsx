@@ -18,6 +18,7 @@ import SmoothScroll from './components/SmoothScroll'
 const AvisoLegal = lazy(() => import('./pages/AvisoLegal'))
 const Privacidad = lazy(() => import('./pages/Privacidad'))
 const Cookies = lazy(() => import('./pages/Cookies'))
+const Terminos = lazy(() => import('./pages/Terminos'))
 
 function Home() {
   return (
@@ -56,6 +57,7 @@ function App() {
                 <Route path="/aviso-legal" element={<AvisoLegal />} />
                 <Route path="/privacidad" element={<Privacidad />} />
                 <Route path="/cookies" element={<Cookies />} />
+                <Route path="/terminos" element={<Terminos />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>
