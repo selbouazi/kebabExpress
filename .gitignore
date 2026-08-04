@@ -19,3 +19,6 @@ ai-context/
 *.sw?
 
 *.log
+
+.opencode/
+opencode.json
